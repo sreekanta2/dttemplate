@@ -1,4 +1,3 @@
-import { getInvoices } from "@/app/api/invoices/invoices.config";
 import Pagination from "@/components/PaginationComponents";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -12,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getInvoices } from "@/config/invoices/invoices.config";
 import { Download, Eye } from "lucide-react";
 import AccountsDetails from "./components/account-details";
 

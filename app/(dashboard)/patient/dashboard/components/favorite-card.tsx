@@ -1,7 +1,7 @@
-import { getDoctors } from "@/app/api/doctors/doctors.config";
 import CustomImage from "@/components/ImageComponent";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getDoctors } from "@/config/doctors/doctors.config";
 import { CalendarDays } from "lucide-react";
 import Link from "next/link";
 

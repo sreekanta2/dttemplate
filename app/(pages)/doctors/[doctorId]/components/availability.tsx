@@ -1,12 +1,11 @@
 "use client";
 
 import DateSlider from "@/components/date-slider";
-import { IAvailability } from "@/types/doctor";
 import "swiper/css";
 
 interface AvailabilityProps {
   id: string;
-  availability: IAvailability[];
+  availability: any;
 }
 
 const Availability = ({ availability, id }: AvailabilityProps) => {

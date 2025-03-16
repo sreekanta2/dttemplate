@@ -1,5 +1,5 @@
-import { getAppointments } from "@/app/api/appointments/config";
 import Pagination from "@/components/PaginationComponents";
+import { getAppointments } from "@/config/appointments/config";
 import AppointmentCard from "./appointment-card";
 
 export default async function CanceledAnointmentContent({

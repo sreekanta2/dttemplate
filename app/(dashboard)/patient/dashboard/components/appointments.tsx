@@ -1,6 +1,6 @@
-import { getAppointments } from "@/app/api/appointments/config";
 import CustomImage from "@/components/ImageComponent";
 import { Button } from "@/components/ui/button";
+import { getAppointments } from "@/config/appointments/config";
 import { Clock, EyeIcon, MessageCircle, Trash } from "lucide-react";
 import Link from "next/link";
 

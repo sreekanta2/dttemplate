@@ -1,4 +1,4 @@
-import { getPatients } from "@/app/api/patients/config";
+import { getPatients } from "@/config/patients/config";
 import Link from "next/link";
 import PatientCard from "../../../_components/patients-card";
 

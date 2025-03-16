@@ -1,5 +1,4 @@
 "use client";
-import { IAward } from "@/types/doctor";
 import { motion } from "framer-motion";
 import { BookmarkPlusIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -9,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
 
 interface AwardsProps {
-  awards: IAward[];
+  awards: any;
 }
 const Awards = ({ awards }: AwardsProps) => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
@@ -60,7 +59,7 @@ const Awards = ({ awards }: AwardsProps) => {
         }}
         className="my-16 h-fit "
       >
-        {awards.map((award, index) => (
+        {awards.map((award: any, index: any) => (
           <SwiperSlide key={index}>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}

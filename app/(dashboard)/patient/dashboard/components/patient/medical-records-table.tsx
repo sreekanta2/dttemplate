@@ -1,4 +1,3 @@
-import { getInvoices } from "@/app/api/invoices/invoices.config";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getInvoices } from "@/config/invoices/invoices.config";
 import { Download, Eye } from "lucide-react";
 
 const MedicalRecordsTable = async () => {

@@ -1,4 +1,3 @@
-import { getInvoices } from "@/app/api/invoices/invoices.config";
 import Pagination from "@/components/PaginationComponents";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getInvoices } from "@/config/invoices/invoices.config";
 import { BadgeCheck, Download, Eye } from "lucide-react";
 import EditForm from "./components/edit-form";
 

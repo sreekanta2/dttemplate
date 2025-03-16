@@ -1,4 +1,3 @@
-import { getAppointments } from "@/app/api/appointments/config";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getAppointments } from "@/config/appointments/config";
 import { Check, Trash } from "lucide-react";
 import Link from "next/link";
 

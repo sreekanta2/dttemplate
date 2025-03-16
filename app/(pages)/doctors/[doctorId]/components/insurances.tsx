@@ -30,9 +30,9 @@ const items = [
 ];
 
 interface InsurancePropsType {
-  insurances: IInsurance[];
+  insurances?: IInsurance[];
 }
-const Insurances = ({ insurances }: InsurancePropsType) => {
+const Insurances = ({ insurances }: any) => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const Insurances = ({ insurances }: InsurancePropsType) => {
           }}
           className=" "
         >
-          {insurances.map((item, index) => (
+          {insurances?.map((item: any, index: number) => (
             <SwiperSlide key={`insurances-${index}`}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}

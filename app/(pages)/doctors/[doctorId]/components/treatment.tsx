@@ -3,12 +3,12 @@ import { ITreatment } from "@/types/doctor";
 interface TreatmentProps {
   treatments: ITreatment[];
 }
-export default function Treatment({ treatments }: TreatmentProps) {
+export default function Treatment({ treatments }: any) {
   return (
     <div className="space-y-5" id="specialty">
       <h1 className="text-lg">Specialty & Pricing</h1>
       <div className=" flex gap-4 flex-wrap">
-        {treatments.map((treatment) => (
+        {treatments.map((treatment: any) => (
           <div
             key={`treatment-${treatment.id}`}
             className="bg-muted  rounded-md text-default-700"

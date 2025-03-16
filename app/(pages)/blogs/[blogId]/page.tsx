@@ -1,4 +1,4 @@
-import { getBlog } from "@/app/api/blogs/blogs.config";
+import { getBlog } from "@/config/blogs/blogs.config";
 import BlogsSidebar from "../components/blogs-sidebar";
 import BlogDetails from "./components/blog-details";
 import CommentForm from "./components/comment-form";

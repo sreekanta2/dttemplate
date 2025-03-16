@@ -1,4 +1,3 @@
-import { getAppointments } from "@/app/api/appointments/config";
 import Pagination from "@/components/PaginationComponents";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -12,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getAppointments } from "@/config/appointments/config";
 import { Check, Trash } from "lucide-react";
 const RequestPatient = async ({
   searchParams,

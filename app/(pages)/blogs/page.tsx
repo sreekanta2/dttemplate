@@ -1,5 +1,5 @@
-import { getBlogs } from "@/app/api/blogs/blogs.config";
 import Pagination from "@/components/PaginationComponents";
+import { getBlogs } from "@/config/blogs/blogs.config";
 import ArticleCard from "./components/article-card";
 import BlogsSidebar from "./components/blogs-sidebar";
 import BlogsHero from "./components/hero";

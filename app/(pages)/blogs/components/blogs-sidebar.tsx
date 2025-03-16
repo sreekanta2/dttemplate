@@ -1,6 +1,6 @@
-import { getBlogs } from "@/app/api/blogs/blogs.config";
 import CustomImage from "@/components/ImageComponent";
 import { Badge } from "@/components/ui/badge";
+import { getBlogs } from "@/config/blogs/blogs.config";
 import Link from "next/link";
 const categories = [
   { id: 1, name: "Cardiology", count: 62 },

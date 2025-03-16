@@ -1,6 +1,5 @@
 "use client"; // Convert to client component
 
-import { getAppointments } from "@/app/api/appointments/config";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getAppointments } from "@/config/appointments/config";
 import { Download, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 

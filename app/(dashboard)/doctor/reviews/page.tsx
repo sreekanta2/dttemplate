@@ -1,8 +1,8 @@
-import { getReviews } from "@/app/api/reviews/review.config";
 import DatePickerWithRange from "@/components/date-picker-with-range";
 import CustomImage from "@/components/ImageComponent";
 import Pagination from "@/components/PaginationComponents";
 import { Rating } from "@/components/ui/rating";
+import { getReviews } from "@/config/reviews/review.config";
 
 export default async function ReviewsPageView({
   searchParams,

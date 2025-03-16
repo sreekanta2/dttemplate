@@ -1,16 +1,15 @@
 import BasicMap from "@/components/maps-google/basic-map";
 import { avatar } from "@/config/user.config";
-import { IClinic } from "@/types/doctor";
 import Image from "next/image";
 
 interface ClinicProps {
-  clinics: IClinic[];
+  clinics: any;
 }
 export default function ClinicLocation({ clinics }: ClinicProps) {
   return (
     <div id="clinics" className="  w-full space-y-4">
       <h1 className="text-lg">Clinics & Locations</h1>
-      {clinics.map((clinic) => (
+      {clinics.map((clinic: any) => (
         <div
           className=" flex flex-col lg:flex-row  border   rounded-md justify-between gap-8 p-4 bg-card"
           key={clinic.id}

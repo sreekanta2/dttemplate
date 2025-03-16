@@ -1,5 +1,5 @@
-import { getPatients } from "@/app/api/patients/config";
 import Pagination from "@/components/PaginationComponents";
+import { getPatients } from "@/config/patients/config";
 import PatientCard from "../../_components/patients-card";
 
 export default async function InActivePatientContent({

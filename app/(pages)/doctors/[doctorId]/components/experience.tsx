@@ -5,13 +5,13 @@ import { Dot } from "lucide-react";
 import Image from "next/image";
 
 interface ExperienceProps {
-  experience: IExperience[];
+  experience?: IExperience[];
 }
-export default function Experience({ experience }: ExperienceProps) {
+export default function Experience({ experience }: any) {
   return (
     <div className="space-y-5 max-w-5xl py-2   " id="experience">
       <h1 className="text-lg ">Practice Experience</h1>
-      {experience?.map((ex) => {
+      {experience?.map((ex: any) => {
         const {
           title,
           organization,

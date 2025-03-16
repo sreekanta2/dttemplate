@@ -1,18 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { invoices } from "./data";
-
+import { doctorsData } from "./data";
 export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const page = parseInt(searchParams.get("page") || "1", 10);
-    const limit = parseInt(searchParams.get("limit") || "10", 10);
+    const limit = parseInt(searchParams.get("limit") || "5", 10);
 
     const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
 
-    const paginatedData = invoices.slice(startIndex, endIndex);
-    const totalRecords = invoices.length;
+    const paginatedData = doctorsData.slice(startIndex, endIndex);
+    const totalRecords = doctorsData.length;
     const totalPages = Math.ceil(totalRecords / limit);
 
     return NextResponse.json({

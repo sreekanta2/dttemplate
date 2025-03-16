@@ -1,10 +1,10 @@
-import { getDoctors } from "@/app/api/doctors/doctors.config";
 import CustomImage from "@/components/ImageComponent";
 import Pagination from "@/components/PaginationComponents";
 import { CheckMark, User } from "@/components/svg";
 import { Button } from "@/components/ui/button";
 import { CardTitle } from "@/components/ui/card";
 import { Rating } from "@/components/ui/rating";
+import { getDoctors } from "@/config/doctors/doctors.config";
 import { Award, Clock, DollarSign, MapPin, ThumbsUp } from "lucide-react";
 import Link from "next/link";
 import DoctorFilteringPageForm from "./components/doctors-filtering-form";

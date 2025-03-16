@@ -1,10 +1,7 @@
 import axios from "axios";
 
 // Safely set the baseURL with a fallback
-const baseURL =
-  typeof window === "undefined"
-    ? process.env.NEXTAUTH_URL + "/api" || "http://localhost:3000/api" // Server-side
-    : "";
+const baseURL = process.env.NEXTAUTH_URL + "/api";
 
 export const api = axios.create({
   baseURL,

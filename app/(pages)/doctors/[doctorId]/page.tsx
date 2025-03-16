@@ -1,4 +1,4 @@
-import { getDoctor } from "@/app/api/doctors/doctors.config";
+import { getDoctor } from "@/config/doctors/doctors.config";
 import Availability from "./components/availability";
 import Awards from "./components/awards";
 import ClinicLocation from "./components/clinics-locatin";
@@ -17,8 +17,10 @@ export default async function DoctorPage({
   params: { doctorId: string };
 }) {
   const { doctorId } = params;
-  const doctor = await getDoctor(doctorId);
-
+  const doctor = await getDoctor(doctorId, 1, 5);
+  if (!doctor?.data) {
+    return <div>Doctor not found</div>;
+  }
   return (
     <>
       <DoctorHero doctorId={doctorId} />
@@ -26,27 +28,24 @@ export default async function DoctorPage({
         <div className="container mx-auto space-y-8 pb-8    ">
           <ProfileHeader doctorId={doctorId} doctor={doctor} />
           <ProfileHashTag doctorId={doctorId} />
-          <p> {doctor?.bio}</p>
-          <Experience experience={doctor?.experience} />
-          {doctor?.insurances?.length > 0 && (
-            <Insurances insurances={doctor.insurances} />
-          )}
+          <p> {doctor?.data?.bio}</p>
+          <Experience experience={doctor?.data?.experience} />
 
-          {doctor?.treatments?.length > 0 && (
-            <Treatment treatments={doctor?.treatments} />
-          )}
-          {doctor?.availability?.length > 0 && (
-            <Availability
-              id="availability"
-              availability={doctor?.availability}
-            />
-          )}
-          {doctor?.clinics && <ClinicLocation clinics={doctor?.clinics} />}
-          {doctor?.awards?.length > 0 && <Awards awards={doctor?.awards} />}
+          <Insurances insurances={doctor.data?.insurances} />
+
+          <Treatment treatments={doctor?.data?.treatments} />
+
+          <Availability
+            id="availability"
+            availability={doctor?.data?.availability}
+          />
+
+          <ClinicLocation clinics={doctor?.data?.clinics} />
+          <Awards awards={doctor?.data?.awards} />
 
           {/* <BusinessOur /> */}
-          <ReviewPage reviews={doctor?.reviews} />
-          <ReviewForm doctorId={doctor?.id} />
+          <ReviewPage reviews={doctor?.data?.reviews} />
+          <ReviewForm doctorId={doctor?.data?.id} />
         </div>
       </div>
     </>

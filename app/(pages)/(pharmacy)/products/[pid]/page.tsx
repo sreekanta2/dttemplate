@@ -1,6 +1,5 @@
 "use client";
 import CustomImage from "@/components/ImageComponent";
-import { ProductIcon1 } from "@/components/svg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -9,25 +8,6 @@ import { Icon } from "@iconify/react";
 import ProductHero from "./components/hero";
 
 export default function ProductPage({ params }: { params: { pid: string } }) {
-  const pid = params.pid;
-
-  const highlights = [
-    "Safi syrup is known for its best purifying syrup for blood.",
-    "It helps in eliminating the toxins from the bloodstream.",
-    "It improves digestion.",
-    "It also helps in indigestion and constipation.",
-  ];
-  const productDetails = [
-    { label: "SKU", value: "2023-02-0057" },
-    { label: "Manufacturer", value: "Hamdard (Wakf) Laboratories" },
-  ];
-  const shippingInfo = [
-    {
-      icon: <ProductIcon1 />,
-      title: "Free Shipping",
-      description: "Free shipping with discount",
-    },
-  ];
   const product = {
     id: 1,
     imageUrl: "/products/panadol.jpg",

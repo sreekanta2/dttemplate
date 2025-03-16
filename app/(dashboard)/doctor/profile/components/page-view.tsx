@@ -1,6 +1,6 @@
-import { getDoctor } from "@/app/api/doctors/doctors.config";
 import Loader from "@/components/chat/loader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getDoctor } from "@/config/doctors/doctors.config";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import Language from "./language";
@@ -33,7 +33,10 @@ const DoctorSettingsPageView = async ({
   const Clinics = dynamic(() => import("./clinics/clinics"), {
     loading: () => <Loader />,
   });
-  const doctor = await getDoctor("1");
+  const doctor = await getDoctor("1", 1, 5);
+  if (!doctor) {
+    return <div>Doctor not found</div>;
+  }
 
   return (
     <div className="space-y-6  bg-card p-6 rounded-md">
@@ -54,26 +57,29 @@ const DoctorSettingsPageView = async ({
           </TabsList>
           {/* Tabs Content */}
           <TabsContent value="basic-details" className="mt-4">
-            {doctor?.user && doctor?.addresses && (
-              <BasicDetails user={doctor.user} address={doctor?.addresses} />
+            {doctor?.data?.user && doctor?.data.addresses && (
+              <BasicDetails
+                user={doctor.data?.user}
+                address={doctor?.data?.addresses}
+              />
             )}
           </TabsContent>
           <TabsContent value="experience" className="mt-4">
             <Suspense fallback={<Loader />}>
-              {doctor?.experience && (
-                <Experience experience={doctor?.experience} />
+              {doctor?.data?.experience && (
+                <Experience experience={doctor?.data?.experience} />
               )}
             </Suspense>
           </TabsContent>
           <TabsContent value="awards" className="mt-4">
             <Suspense fallback={<Loader />}>
-              {doctor?.awards && <Awards awards={doctor?.awards} />}
+              {doctor?.data?.awards && <Awards awards={doctor?.data?.awards} />}
             </Suspense>
           </TabsContent>
           <TabsContent value="insurances" className="mt-4">
             <Suspense fallback={<Loader />}>
-              {doctor?.insurances && (
-                <Insurances insurances={doctor?.insurances} />
+              {doctor?.data?.insurances && (
+                <Insurances insurances={doctor?.data?.insurances} />
               )}
             </Suspense>
           </TabsContent>
@@ -84,7 +90,9 @@ const DoctorSettingsPageView = async ({
           </TabsContent>
           <TabsContent value="clinics" className="mt-4">
             <Suspense fallback={<Loader />}>
-              {doctor?.clinics && <Clinics clinics={doctor?.clinics} />}
+              {doctor?.data?.clinics && (
+                <Clinics clinics={doctor?.data?.clinics} />
+              )}
             </Suspense>
           </TabsContent>
         </Tabs>
