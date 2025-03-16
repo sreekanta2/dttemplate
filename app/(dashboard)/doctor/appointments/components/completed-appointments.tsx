@@ -1,5 +1,5 @@
 import Pagination from "@/components/PaginationComponents";
-import { getAppointments } from "@/config/appointments/config";
+import { getAppointments } from "@/config/appointments/appointments.config";
 import AppointmentCard from "./appointment-card";
 
 export default async function CompletedAnointmentContent({

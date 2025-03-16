@@ -34,6 +34,9 @@ const AccountPage = async ({
 
   // Fetch doctors data based on page and limit
   const invoicesResponse = await getInvoices({ page, limit });
+  if (invoicesResponse?.status === "fail") {
+    return <div>Something went wrong</div>;
+  }
   // console.log(doctorsResponse?.data?.length);
   return (
     <div className="space-y-6   p-4 rounded-md bg-card">

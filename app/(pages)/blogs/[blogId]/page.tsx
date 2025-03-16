@@ -16,7 +16,7 @@ export default async function SingleBlogsPage({
   const page = parseInt(searchParams.page || "1", 10);
   const limit = 5;
   const { blogId } = params;
-  const blog = await getBlog(blogId, page, limit);
+  const blog = await getBlog(1, page, limit);
 
   return (
     <div>

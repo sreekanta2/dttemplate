@@ -17,7 +17,7 @@ export default function BlogDetails({
     <div className="bg-card">
       <div className="w-full border rounded-md  p-4  ">
         <CustomImage
-          src={blog.image}
+          src={blog?.image}
           alt={blog.name}
           aspectRatio="16/9"
           className="rounded-lg transform scale-100 group-hover:scale-110 transition-all duration-300"

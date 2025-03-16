@@ -26,7 +26,7 @@ export default async function DoctorPage({
       <DoctorHero doctorId={doctorId} />
       <div className="bg-background pt-8">
         <div className="container mx-auto space-y-8 pb-8    ">
-          <ProfileHeader doctorId={doctorId} doctor={doctor} />
+          <ProfileHeader doctorId={doctorId} doctor={doctor?.data} />
           <ProfileHashTag doctorId={doctorId} />
           <p> {doctor?.data?.bio}</p>
           <Experience experience={doctor?.data?.experience} />

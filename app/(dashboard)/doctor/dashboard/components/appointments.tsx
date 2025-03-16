@@ -10,15 +10,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getAppointments } from "@/config/appointments/config";
+import { getAppointments } from "@/config/appointments/appointments.config";
 import { Check, Trash } from "lucide-react";
 import Link from "next/link";
 
 const Appointments = async () => {
-  const appointmentResponse = await getAppointments({ page: 1, limit: 7 });
+  const appointmentResponse = await getAppointments({ page: 1, limit: 5 });
   return (
     <div className=" w-full">
-      <div className="border p-4 bg-card rounded-md space-y-2">
+      <div className="border p-4 pb-0 bg-card rounded-md space-y-2">
         <h1 className="text-lg md:text-xl font-medium     bg-card/50 text-default-700      ">
           Appointments
         </h1>
@@ -114,7 +114,7 @@ const Appointments = async () => {
           </ScrollArea>
           <Link
             href="/doctor/appointments"
-            className=" text-default-700 text-sm hover:text-blue-400  text-center mt-3  flex justify-center  "
+            className=" text-default-700 text-sm hover:text-blue-400  text-center mt-1  flex justify-center  "
           >
             View All
           </Link>

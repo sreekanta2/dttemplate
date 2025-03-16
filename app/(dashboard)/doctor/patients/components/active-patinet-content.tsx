@@ -12,6 +12,7 @@ export default async function ActivePatientsContent({
   const limit = 4;
   // Fetch doctors data based on page and limit
   const patients = await getPatients({ page, limit, status: true });
+  console.log(patients);
 
   return (
     <div>

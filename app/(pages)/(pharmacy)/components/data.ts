@@ -213,84 +213,71 @@ export const products = [
   },
 ];
 
-import {
-  default as aspininC,
-  default as ironTablets,
-} from "@/public/images/pharmacy/products/product-19.jpg";
-import {
-  default as amberTonic,
-  default as vitaminTablets,
-} from "@/public/images/pharmacy/products/product-2.jpg";
-import colchicine from "@/public/images/pharmacy/products/product-3.jpg";
-import painKiller from "@/public/images/pharmacy/products/product-4.jpg";
-import lCarnitine from "@/public/images/pharmacy/products/product-5.jpg";
-import coughSyrup from "@/public/images/pharmacy/products/product-6.jpg";
-
-export const productData = [
-  {
-    category: "Home & Health",
-    image: vitaminTablets,
-    name: "Vitamin Tablets",
-    quantity: "60 pills",
-    price: "$150",
-    originalPrice: "$199",
-  },
-  {
-    category: "Women’s Care",
-    image: amberTonic,
-    name: "Amber Tonic",
-    quantity: "250 ml",
-    price: "$200",
-    originalPrice: "$300",
-  },
-  {
-    category: "Weight",
-    image: colchicine,
-    name: "Colchicine",
-    quantity: "100 pills",
-    price: "$370",
-    originalPrice: "$450",
-  },
-  {
-    category: "Oral Care",
-    image: painKiller,
-    name: "Pain Killer",
-    quantity: "30 pills",
-    discount: "5% OFF",
-    price: "$430",
-    originalPrice: "$120",
-  },
-  {
-    category: "Women’s Care",
-    image: aspininC,
-    name: "Aspinin-C",
-    quantity: "70 pills",
-    price: "$200",
-    originalPrice: "$300",
-  },
-  {
-    category: "Home & Health",
-    image: lCarnitine,
-    name: "L-Carnitine",
-    quantity: "100 pills",
-    price: "$130",
-    originalPrice: "$150",
-  },
-  {
-    category: "Home & Health",
-    image: ironTablets,
-    name: "Iron Tablets",
-    quantity: "60 pills",
-    discount: "5% OFF",
-    price: "$230",
-    originalPrice: "$250",
-  },
-  {
-    category: "Baby Care",
-    image: coughSyrup,
-    name: "Cough Syrup",
-    quantity: "250 ml",
-    price: "$180",
-    originalPrice: "$400",
-  },
-];
+// export const productData = [
+//   {
+//     category: "Home & Health",
+//     image: vitaminTablets,
+//     name: "Vitamin Tablets",
+//     quantity: "60 pills",
+//     price: "$150",
+//     originalPrice: "$199",
+//   },
+//   {
+//     category: "Women’s Care",
+//     image: amberTonic,
+//     name: "Amber Tonic",
+//     quantity: "250 ml",
+//     price: "$200",
+//     originalPrice: "$300",
+//   },
+//   {
+//     category: "Weight",
+//     image: colchicine,
+//     name: "Colchicine",
+//     quantity: "100 pills",
+//     price: "$370",
+//     originalPrice: "$450",
+//   },
+//   {
+//     category: "Oral Care",
+//     image: painKiller,
+//     name: "Pain Killer",
+//     quantity: "30 pills",
+//     discount: "5% OFF",
+//     price: "$430",
+//     originalPrice: "$120",
+//   },
+//   {
+//     category: "Women’s Care",
+//     image: aspininC,
+//     name: "Aspinin-C",
+//     quantity: "70 pills",
+//     price: "$200",
+//     originalPrice: "$300",
+//   },
+//   {
+//     category: "Home & Health",
+//     image: lCarnitine,
+//     name: "L-Carnitine",
+//     quantity: "100 pills",
+//     price: "$130",
+//     originalPrice: "$150",
+//   },
+//   {
+//     category: "Home & Health",
+//     image: ironTablets,
+//     name: "Iron Tablets",
+//     quantity: "60 pills",
+//     discount: "5% OFF",
+//     price: "$230",
+//     originalPrice: "$250",
+//   },
+//   {
+//     category: "Baby Care",
+//     image: coughSyrup,
+//     name: "Cough Syrup",
+//     quantity: "250 ml",
+//     price: "$180",
+//     originalPrice: "$400",
+//   },
+// ];

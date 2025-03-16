@@ -1,6 +1,6 @@
-import { invoices } from "./data";
+import { prescriptions } from "./data";
 
-export const getInvoices = async ({
+export const getPrescriptions = async ({
   page,
   limit,
 }: {
@@ -10,8 +10,8 @@ export const getInvoices = async ({
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
 
-  const paginatedData = invoices.slice(startIndex, endIndex);
-  const totalRecords = invoices.length;
+  const paginatedData = prescriptions.slice(startIndex, endIndex);
+  const totalRecords = prescriptions.length;
   const totalPages = Math.ceil(totalRecords / limit);
 
   return {

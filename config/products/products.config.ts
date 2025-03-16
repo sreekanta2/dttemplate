@@ -1,6 +1,7 @@
-import { invoices } from "./data";
+import { api } from "@/config/axios.config";
+import { productData } from "./data";
 
-export const getInvoices = async ({
+export const getProducts = async ({
   page,
   limit,
 }: {
@@ -10,8 +11,8 @@ export const getInvoices = async ({
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
 
-  const paginatedData = invoices.slice(startIndex, endIndex);
-  const totalRecords = invoices.length;
+  const paginatedData = productData.slice(startIndex, endIndex);
+  const totalRecords = productData.length;
   const totalPages = Math.ceil(totalRecords / limit);
 
   return {
@@ -27,4 +28,13 @@ export const getInvoices = async ({
       hasPrevPage: startIndex > 0,
     },
   };
+};
+export const getProduct = async (doctoId: string) => {
+  try {
+    const response = await api.get(`/products/${doctoId}`);
+    return response?.data?.data;
+  } catch (error: any) {
+    console.log(error);
+    return error?.response?.data;
+  }
 };

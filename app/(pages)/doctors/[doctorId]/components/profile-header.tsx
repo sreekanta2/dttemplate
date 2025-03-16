@@ -51,7 +51,9 @@ export default function ProfileHeader({
 
             <div>
               <div className="flex items-center gap-x-4">
-                <h1 className="text-lg text-default-800">{doctor.user.name}</h1>
+                <h1 className="text-lg text-default-800">
+                  {doctor?.user?.name}
+                </h1>
                 <span className="w-5 h-5">
                   <CheckMark />
                 </span>

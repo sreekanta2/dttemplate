@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getAppointments } from "@/config/appointments/config";
+import { getAppointments } from "@/config/appointments/appointments.config";
 import { Download, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 

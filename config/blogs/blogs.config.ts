@@ -1,4 +1,3 @@
-import { api } from "@/config/axios.config";
 import { blogsData } from "./data";
 
 export const getBlogs = async ({
@@ -29,14 +28,37 @@ export const getBlogs = async ({
     },
   };
 };
-export const getBlog = async (blogId: string, page: number, limit: number) => {
-  try {
-    const response = await api.get(
-      `/blogs/${blogId}?page=${page}&limit=${limit}`
-    );
-    return response?.data;
-  } catch (error: any) {
-    console.log(error);
-    return error?.response?.data;
+export const getBlog = async (blogId: number, page: number, limit: number) => {
+  const blog = blogsData.find((b) => b.id === 1);
+  if (!blog) {
+    return { status: "fail", message: "Blog not found" };
   }
+
+  // Paginate comments
+  const totalComments = blog.comments.length;
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+  const paginatedComments = blog.comments.slice(startIndex, endIndex);
+
+  return {
+    status: "success",
+    message: "Blog fetched successfully",
+    data: {
+      id: blog.id,
+      title: blog.title,
+      content: blog.content,
+      publishedAt: blog.publishedAt,
+      image: blog.image,
+      author: blog.author,
+      comments: paginatedComments,
+    },
+    pagination: {
+      totalRecords: totalComments,
+      totalPages: Math.ceil(totalComments / limit),
+      currentPage: page,
+      perPage: limit,
+      hasNextPage: endIndex < totalComments,
+      hasPrevPage: startIndex > 0,
+    },
+  };
 };

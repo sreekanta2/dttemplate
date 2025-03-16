@@ -1,4 +1,3 @@
-import { api } from "@/config/axios.config";
 import { appointments } from "./data";
 
 export const getAppointments = async ({
@@ -10,8 +9,6 @@ export const getAppointments = async ({
   limit: number;
   completed?: boolean;
 }) => {
-  // Parse query parameters
-
   let filteredData;
 
   if (completed) {
@@ -49,13 +46,4 @@ export const getAppointments = async ({
       hasPrevPage: startIndex > 0,
     },
   };
-};
-export const getDoctor = async (doctoId: string) => {
-  try {
-    const response = await api.get(`/appointments/${doctoId}`);
-    return response?.data?.data;
-  } catch (error: any) {
-    console.log(error);
-    return error?.response?.data;
-  }
 };

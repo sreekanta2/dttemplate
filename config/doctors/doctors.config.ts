@@ -33,10 +33,6 @@ export const getDoctor = async (
   page: number,
   limit: number
 ) => {
-  if (!doctorId) {
-    const doctorId = 1;
-  }
-
   // Find doctor by ID
   const doctor = doctorsData.find((item) => item.id === doctorId);
   if (!doctor) {

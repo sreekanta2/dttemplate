@@ -1,4 +1,3 @@
-import Pagination from "@/components/PaginationComponents";
 import {
   Dialog,
   DialogContent,
@@ -95,7 +94,6 @@ export default function ProfileDetails() {
           </Tabs>
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
-        <Pagination currentPage={1} totalPages={10} />
       </DialogContent>
     </Dialog>
   );

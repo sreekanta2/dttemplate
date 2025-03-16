@@ -1,5 +1,5 @@
-import { getProducts } from "@/app/api/products/products.config";
 import Pagination from "@/components/PaginationComponents";
+import { getProducts } from "@/config/products/products.config";
 import ProductsHero from "./components/hero";
 import PharmacyProductsCard from "./components/product-card";
 import ProductFilterForm from "./components/product-filter-form";

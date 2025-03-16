@@ -1,5 +1,5 @@
 import Pagination from "@/components/PaginationComponents";
-import { getAppointments } from "@/config/appointments/config";
+import { getAppointments } from "@/config/appointments/appointments.config";
 import AppointmentCard from "./appointment-card";
 
 export default async function CanceledAnointmentContent({
@@ -12,17 +12,16 @@ export default async function CanceledAnointmentContent({
   const limit = 6;
   // Fetch doctors data based on page and limit
   const appointments = await getAppointments({ page, limit, completed: false });
+  if (!appointments?.data || appointments?.data?.length === 0) {
+    return <h1>No Completed Appointment found!</h1>;
+  }
 
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
-        {appointments?.data?.length > 0 ? (
-          appointments?.data?.map((appointment: any) => (
-            <AppointmentCard key={appointment.id} appointment={appointment} />
-          ))
-        ) : (
-          <h1>No Completed Appointment found!</h1>
-        )}
+        {appointments?.data?.map((appointment: any) => (
+          <AppointmentCard key={appointment.id} appointment={appointment} />
+        ))}
       </div>
       {appointments?.pagination?.totalRecords >
         appointments?.pagination?.perPage && (

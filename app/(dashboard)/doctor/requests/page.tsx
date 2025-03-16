@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getAppointments } from "@/config/appointments/config";
+import { getAppointments } from "@/config/appointments/appointments.config";
 import { Check, Trash } from "lucide-react";
 const RequestPatient = async ({
   searchParams,
@@ -20,7 +20,7 @@ const RequestPatient = async ({
 }) => {
   const page = parseInt(searchParams?.page || "1", 10);
 
-  const limit = 10;
+  const limit = 6;
   // Fetch doctors data based on page and limit
   const appointments = await getAppointments({ page, limit });
   // console.log(appointments.pagination);
@@ -52,7 +52,7 @@ const RequestPatient = async ({
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {appointments?.data.map((item: any) => (
+                  {appointments?.data?.map((item: any) => (
                     <TableRow key={item.id} className="hover:bg-muted">
                       <TableCell className="font-medium text-card-foreground/80">
                         <div className="flex gap-3 items-center">

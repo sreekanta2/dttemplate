@@ -37,9 +37,7 @@ const SingleMenuItem = ({
                       }
                     )}
                   >
-                    {item?.icon && (
-                      <item.icon className="w-6 h-6 text-red-700" />
-                    )}
+                    {item?.icon && <item.icon className="w-6 h-6  " />}
                   </span>
                 </Tooltip.Trigger>
                 <Tooltip.Portal>
