@@ -40,7 +40,7 @@ export function PaymentRequestModal() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="soft" className="bg-foreground text-white">
+        <Button color="success" className="  ">
           Request Payment
         </Button>
       </AlertDialogTrigger>

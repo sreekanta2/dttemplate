@@ -1,14 +1,15 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import CustomFormField, { FormFieldType } from "@/components/custom-form-field";
 import FileUploaderRestrictions from "@/components/file-upload-reactions";
-import LanguageForm from "@/components/language-form";
 import ResetButton from "@/components/reset-button";
 import SubmitButton from "@/components/submit-button";
+import { Eye } from "@/components/svg";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -20,14 +21,14 @@ import { Form } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SelectItem } from "@/components/ui/select";
-import { Edit } from "lucide-react";
 import { useState, useTransition } from "react";
+import toast from "react-hot-toast";
 
 // Define schema using zod
 const formSchema = z.object({
   title: z.string().min(2, "Title must be at least 2 characters."),
   patient: z.number().min(2, "Select patient."),
-  startDate: z.string().min(1, "Date  is required."),
+  startDate: z.date(),
 
   hospitalName: z.string().min(2, "hospitalName is required."),
   symptoms: z.array(z.string()).min(1, "Symptoms are required."),
@@ -50,15 +51,20 @@ export function MedicalRecordsUpdateForm({
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "Title",
-      patient: 1,
-      startDate: "2011/12/01",
+      title: "",
+      patient: 0,
+      startDate: undefined,
       hospitalName: "Female",
       symptoms: ["Female", "dd"],
     },
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {};
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    startTransition(() => {
+      toast.success("Medical Record added successfully");
+      console.log(data);
+    });
+  };
   const gender = [
     { id: "1", label: "Male" },
     { id: "2", label: "Female" },
@@ -67,10 +73,14 @@ export function MedicalRecordsUpdateForm({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Edit
-          className="border dark:border dark:border-gray-700 p-2 rounded-full shadow-lg hover:bg-blue-500 hover:text-white cursor-pointer"
-          size={32}
-        />
+        <Button
+          size="icon"
+          variant="outline"
+          className="h-7 w-7"
+          color="secondary"
+        >
+          <Eye className="h-4 w-4" />
+        </Button>
       </DialogTrigger>
       <DialogContent className="w-full max-w-xl p-6  ">
         <ScrollArea className="h-[75vh] pr-4">
@@ -117,18 +127,12 @@ export function MedicalRecordsUpdateForm({
                 placeholder="mm/dd/yyyy"
               />
 
-              <Controller
+              <CustomFormField
+                fieldType={FormFieldType.INPUT}
+                name="title"
+                label="Title"
                 control={form.control}
-                name="symptoms"
-                render={({ field: { value, onChange } }) => (
-                  <LanguageForm
-                    languages={value}
-                    placeholder="Type new"
-                    setLanguages={(newLanguages) => {
-                      onChange(newLanguages);
-                    }}
-                  />
-                )}
+                placeholder="Enter Title"
               />
               <div>
                 <Label>Reports</Label>

@@ -17,6 +17,7 @@ import {
   DialogHeader,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Form } from "@/components/ui/form";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SelectItem } from "@/components/ui/select";
 import { avatar } from "@/config/user.config";
@@ -68,91 +69,97 @@ export function DependentsForm({ edit = false }: DependentsFormProps) {
         {!edit ? (
           <Button variant="soft">Add Dependents</Button>
         ) : (
-          <Edit
-            className="border dark:border dark:border-gray-700 p-2 rounded-full shadow-lg hover:bg-blue-500 hover:text-white cursor-pointer"
-            size={32}
-          />
+          <Button
+            size="icon"
+            variant="outline"
+            className="h-7 w-7"
+            color="destructive"
+          >
+            <Edit className="h-4 w-4" />
+          </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="w-full max-w-xl p-6  ">
+      <DialogContent size="2xl" className="  p-6  ">
         <ScrollArea className="h-[75vh] pr-4">
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <DialogHeader>
-              <div className="border w-full p-2 rounded-md flex gap-4 bg-primary/10">
-                <div className="w-24 h-24 rounded-md overflow-hidden">
-                  <ImageComponent
-                    src={images[0] || avatar}
-                    alt="Profile Image"
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <DialogHeader>
+                <div className="border w-full p-2 rounded-md flex gap-4 bg-primary/10">
+                  <div className="w-24 h-24 rounded-md overflow-hidden">
+                    <ImageComponent
+                      src={images[0] || avatar}
+                      alt="Profile Image"
+                    />
+                  </div>
+                  <FileInput
+                    images={images}
+                    setImages={setImages}
+                    label="Profile Image"
+                    maxFiles={1}
                   />
                 </div>
-                <FileInput
-                  images={images}
-                  setImages={setImages}
-                  label="Profile Image"
-                  maxFiles={1}
-                />
-              </div>
-              <DialogDescription></DialogDescription>
-            </DialogHeader>
-            <CustomFormField
-              fieldType={FormFieldType.INPUT}
-              name="name"
-              label="Name"
-              control={form.control}
-              placeholder="Enter Name"
-            />
-            <CustomFormField
-              fieldType={FormFieldType.INPUT}
-              name="relationship"
-              label="Relationship"
-              control={form.control}
-              placeholder="Enter relationship"
-            />
+                <DialogDescription></DialogDescription>
+              </DialogHeader>
+              <CustomFormField
+                fieldType={FormFieldType.INPUT}
+                name="name"
+                label="Name"
+                control={form.control}
+                placeholder="Enter Name"
+              />
+              <CustomFormField
+                fieldType={FormFieldType.INPUT}
+                name="relationship"
+                label="Relationship"
+                control={form.control}
+                placeholder="Enter relationship"
+              />
 
-            <CustomFormField
-              fieldType={FormFieldType.DATE_PICKER}
-              control={form.control}
-              name="dob"
-              label="Date of Birth"
-              placeholder="mm/dd/yyyy"
-            />
-            <CustomFormField
-              fieldType={FormFieldType.SELECT}
-              name="type"
-              control={form.control}
-              label="Type"
-              placeholder="Select Type"
-            >
-              {gender.map((g) => (
-                <SelectItem key={g.id} value={g.label}>
-                  <div className="flex cursor-pointer items-center gap-2">
-                    {/* <Image
+              <CustomFormField
+                fieldType={FormFieldType.DATE_PICKER}
+                control={form.control}
+                name="dob"
+                label="Date of Birth"
+                placeholder="mm/dd/yyyy"
+              />
+              <CustomFormField
+                fieldType={FormFieldType.SELECT}
+                name="type"
+                control={form.control}
+                label="Type"
+                placeholder="Select Type"
+              >
+                {gender.map((g) => (
+                  <SelectItem key={g.id} value={g.label}>
+                    <div className="flex cursor-pointer items-center gap-2">
+                      {/* <Image
                           src={doctor.image}
                           width={32}
                           height={32}
                           alt="doctor"
                           className="rounded-full border border-dark-500"
                         /> */}
-                    <p>{g.label}</p>
-                  </div>
-                </SelectItem>
-              ))}
-            </CustomFormField>
+                      <p>{g.label}</p>
+                    </div>
+                  </SelectItem>
+                ))}
+              </CustomFormField>
 
-            {/* Submit Button */}
-            <div className="flex gap-x-4">
-              <SubmitButton variant="soft" color="info" isLoading={isPending}>
-                Submit
-              </SubmitButton>
-              <ResetButton
-                variant="soft"
-                color="destructive"
-                onClick={() => form.reset()}
-              >
-                Reset
-              </ResetButton>
-            </div>
-          </form>
+              {/* Submit Button */}
+              <div className="flex gap-x-4">
+                <SubmitButton variant="soft" color="info" isLoading={isPending}>
+                  Submit
+                </SubmitButton>
+                <ResetButton
+                  variant="soft"
+                  color="destructive"
+                  onClick={() => form.reset()}
+                >
+                  Reset
+                </ResetButton>
+              </div>
+            </form>
+          </Form>
         </ScrollArea>
       </DialogContent>
     </Dialog>
