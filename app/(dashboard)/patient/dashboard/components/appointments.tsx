@@ -15,8 +15,8 @@ export default async function Appointments() {
         <h1 className="p-4 text-lg lg:text-xl">Appointments</h1>
       </div>
       <div className="px-4 space-y-4">
-        {appointments.data?.length > 0 &&
-          appointments.data.map((appointment: any) => (
+        {appointments?.data?.length > 0 &&
+          appointments?.data?.map((appointment: any) => (
             <div className=" w-full border flex  gap-4 p-3 rounded-md">
               <CustomImage
                 src={appointment.image}

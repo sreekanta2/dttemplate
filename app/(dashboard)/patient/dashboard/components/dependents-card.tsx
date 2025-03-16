@@ -7,14 +7,8 @@ import CustomImage from "@/components/ImageComponent";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import avatar from "@/public/images/avatar/avatar-1.jpg";
-import { useSearchParams } from "next/navigation";
 import AddDepants from "./add-depants-dialog";
 const DependentsCard = () => {
-  const searchParams = useSearchParams();
-  const page = parseInt(searchParams.get("page") || "1", 10);
-
-  const totalPages = 10;
-
   return (
     <div className="border rounded-md">
       <div className="flex  justify-between border-none pb-0 p-4">
