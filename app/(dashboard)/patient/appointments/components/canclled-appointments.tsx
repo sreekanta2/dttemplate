@@ -8,8 +8,7 @@ export default async function CanceledAnointmentContent({
   searchParams: { [key: string]: string };
 }) {
   const page = parseInt(searchParams?.page || "1", 10);
-
-  const limit = 6;
+  const limit = parseInt(searchParams?.limit || "6", 10);
   // Fetch doctors data based on page and limit
   const appointments = await getAppointments({ page, limit, completed: false });
   if (!appointments?.data || appointments?.data?.length === 0) {

@@ -64,7 +64,7 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
                       Verified Medication
                     </span>
                   </div>
-                  <div className="h-4 w-px bg-gray-200"></div>
+                  <div className="h-4 w-px bg-default-200"></div>
                   <div className="flex items-center gap-1 text-blue-600">
                     <Icon icon="heroicons:shield-check" className="w-5 h-5" />
                     <span className="text-sm font-medium">GST Included</span>
@@ -97,7 +97,7 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
                         ? "bg-emerald-500"
                         : product.stockStatus === "low-stock"
                         ? "bg-amber-500"
-                        : "bg-gray-400"
+                        : "bg-default-400"
                     )}
                   />
                   <span className="text-sm font-medium capitalize">
@@ -121,7 +121,7 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
                   </Button>
                   <Input
                     type="number"
-                    className=" w-full md:w-16 border-0 bg-transparent text-center dark:text-white [appearance:textfield] focus-visible:ring-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    className=" w-full md:w-16 border-0 bg-transparent text-center dark:text-card [appearance:textfield] focus-visible:ring-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                     value="1"
                     min="1"
                   />
@@ -181,35 +181,37 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
               {/* Medical Information Panel */}
               <div className="space-y-8">
                 {/* Clinical Details Card */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                <div className="bg-card rounded-xl shadow-sm border border-default-100 p-6">
+                  <h2 className="text-2xl font-bold text-default-900 mb-4">
                     Clinical Information
                   </h2>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <h3 className="text-sm font-medium text-gray-500">
+                      <h3 className="text-sm font-medium text-default-500">
                         Active Ingredients
                       </h3>
-                      <p className="text-gray-900">Paracetamol (650mg)</p>
+                      <p className="text-default-900">Paracetamol (650mg)</p>
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium text-gray-500">
+                      <h3 className="text-sm font-medium text-default-500">
                         Therapeutic Class
                       </h3>
-                      <p className="text-gray-900">Non-opioid Analgesic</p>
+                      <p className="text-default-900">Non-opioid Analgesic</p>
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium text-gray-500">
+                      <h3 className="text-sm font-medium text-default-500">
                         Pharmacology
                       </h3>
-                      <p className="text-gray-900">COX-1 & COX-2 Inhibitor</p>
+                      <p className="text-default-900">
+                        COX-1 & COX-2 Inhibitor
+                      </p>
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium text-gray-500">
+                      <h3 className="text-sm font-medium text-default-500">
                         Half Life
                       </h3>
-                      <p className="text-gray-900">1-4 hours</p>
+                      <p className="text-default-900">1-4 hours</p>
                     </div>
                   </div>
 
@@ -220,10 +222,10 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
                         className="w-5 h-5 text-amber-600 shrink-0"
                       />
                       <div>
-                        <h3 className="font-medium text-gray-900">
+                        <h3 className="font-medium text-default-900">
                           Contraindications
                         </h3>
-                        <ul className="list-disc pl-5 mt-1 text-sm text-gray-600">
+                        <ul className="list-disc pl-5 mt-1 text-sm text-default-600">
                           <li>Severe hepatic impairment</li>
                           <li>Chronic alcohol use</li>
                           <li>Known hypersensitivity to NSAIDs</li>
@@ -237,10 +239,10 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
                         className="w-5 h-5 text-blue-600 shrink-0"
                       />
                       <div>
-                        <h3 className="font-medium text-gray-900">
+                        <h3 className="font-medium text-default-900">
                           Drug Interactions
                         </h3>
-                        <ul className="list-disc pl-5 mt-1 text-sm text-gray-600">
+                        <ul className="list-disc pl-5 mt-1 text-sm text-default-600">
                           <li>Warfarin - Increased bleeding risk</li>
                           <li>Alcohol - Hepatotoxicity risk</li>
                           <li>SSRIs - Increased GI bleeding</li>
@@ -251,37 +253,37 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
                 </div>
 
                 {/* Usage Instructions Card */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                <div className="bg-card rounded-xl shadow-sm border border-default-100 p-6">
+                  <h2 className="text-2xl font-bold text-default-900 mb-4">
                     Dosage Guidelines
                   </h2>
 
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
-                      <thead className="bg-gray-50">
+                      <thead className="bg-default-50">
                         <tr>
-                          <th className="px-4 py-3 text-left text-gray-700">
+                          <th className="px-4 py-3 text-left text-default-700">
                             Age Group
                           </th>
-                          <th className="px-4 py-3 text-left text-gray-700">
+                          <th className="px-4 py-3 text-left text-default-700">
                             Dosage
                           </th>
-                          <th className="px-4 py-3 text-left text-gray-700">
+                          <th className="px-4 py-3 text-left text-default-700">
                             Frequency
                           </th>
-                          <th className="px-4 py-3 text-left text-gray-700">
+                          <th className="px-4 py-3 text-left text-default-700">
                             Max Daily
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t border-gray-200">
+                        <tr className="border-t border-default-200">
                           <td className="px-4 py-3">Adults (18-65)</td>
                           <td className="px-4 py-3">500-1000mg</td>
                           <td className="px-4 py-3">Every 4-6 hours</td>
                           <td className="px-4 py-3">4000mg</td>
                         </tr>
-                        <tr className="border-t border-gray-200">
+                        <tr className="border-t border-default-200">
                           <td className="px-4 py-3">Geriatric (65+)</td>
                           <td className="px-4 py-3">500mg</td>
                           <td className="px-4 py-3">Every 6 hours</td>
@@ -291,7 +293,7 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
                     </table>
                   </div>
 
-                  <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
+                  <div className="mt-6 p-4 bg-card/90 rounded-lg border border-card-200">
                     <div className="flex gap-3">
                       <Icon
                         icon="heroicons:exclamation-circle"
@@ -315,55 +317,57 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
               {/* Patient Information Sidebar */}
               <div className="space-y-6">
                 {/* Regulatory Info Card */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                  <h2 className="text-lg font-bold text-gray-900 mb-3">
+                <div className="bg-card rounded-xl shadow-sm border border-default-100 p-6">
+                  <h2 className="text-lg font-bold text-default-900 mb-3">
                     Regulatory Information
                   </h2>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-500">NDC Number</span>
-                      <span className="text-gray-900">12345-6789-01</span>
+                      <span className="text-default-500">NDC Number</span>
+                      <span className="text-default-900">12345-6789-01</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-500">FDA Approval</span>
+                      <span className="text-default-500">FDA Approval</span>
                       <span className="text-green-600">Approved 1998</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-500">Pregnancy Category</span>
+                      <span className="text-default-500">
+                        Pregnancy Category
+                      </span>
                       <span className="text-amber-600">Category C</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Manufacturer Card */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                  <h2 className="text-lg font-bold text-gray-900 mb-3">
+                <div className="bg-card rounded-xl shadow-sm border border-default-100 p-6">
+                  <h2 className="text-lg font-bold text-default-900 mb-3">
                     Manufacturer Details
                   </h2>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-500">Company</span>
-                      <span className="text-gray-900">
+                      <span className="text-default-500">Company</span>
+                      <span className="text-default-900">
                         Hamdard (Wakf) Laboratories
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-500">License No.</span>
-                      <span className="text-gray-900">MH/MH/2020/123</span>
+                      <span className="text-default-500">License No.</span>
+                      <span className="text-default-900">MH/MH/2020/123</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-500">Batch Number</span>
-                      <span className="text-gray-900">BXP22034</span>
+                      <span className="text-default-500">Batch Number</span>
+                      <span className="text-default-900">BXP22034</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-500">Expiry Date</span>
+                      <span className="text-default-500">Expiry Date</span>
                       <span className="text-red-600">June 2025</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Pharmacist Notes */}
-                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <div className="bg-card-50 p-4 rounded-lg border  ">
                   <div className="flex gap-3">
                     <Icon
                       icon="heroicons:academic-cap"
@@ -382,19 +386,19 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
                 </div>
 
                 {/* Adverse Effects Card */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                  <h2 className="text-lg font-bold text-gray-900 mb-3">
+                <div className="bg-card rounded-xl shadow-sm border border-default-100 p-6">
+                  <h2 className="text-lg font-bold text-default-900 mb-3">
                     Reported Side Effects
                   </h2>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Nausea</span>
-                      <span className="text-xs bg-gray-100 px-2 py-1 rounded-full">
+                      <span className="text-sm text-default-600">Nausea</span>
+                      <span className="text-xs bg-default-100 px-2 py-1 rounded-full">
                         Common (≥1%)
                       </span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">
+                      <span className="text-sm text-default-600">
                         Hepatotoxicity
                       </span>
                       <span className="text-xs bg-red-100 px-2 py-1 rounded-full text-red-700">
@@ -402,7 +406,9 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
                       </span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Skin Rash</span>
+                      <span className="text-sm text-default-600">
+                        Skin Rash
+                      </span>
                       <span className="text-xs bg-amber-100 px-2 py-1 rounded-full text-amber-700">
                         Infrequent (0.1-1%)
                       </span>
@@ -416,7 +422,7 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
               <a
                 href="#"
-                className="p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-500 transition-colors"
+                className="p-4 bg-card border border-default-200 rounded-lg hover:border-blue-500 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <Icon
@@ -430,7 +436,7 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
               </a>
               <a
                 href="#"
-                className="p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-500 transition-colors"
+                className="p-4 bg-card border border-default-200 rounded-lg hover:border-blue-500 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <Icon
@@ -442,7 +448,7 @@ export default function ProductPage({ params }: { params: { pid: string } }) {
               </a>
               <a
                 href="#"
-                className="p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-500 transition-colors"
+                className="p-4 bg-card border border-default-200 rounded-lg hover:border-blue-500 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <Icon

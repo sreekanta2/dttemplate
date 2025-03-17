@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import CustomImage from "@/components/ImageComponent";
 import { Button } from "@/components/ui/button";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";

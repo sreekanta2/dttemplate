@@ -1,3 +1,6 @@
+"use client"; // Convert to client component
+
+import Pagination from "@/components/PaginationComponents";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,79 +12,99 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getInvoices } from "@/config/invoices/invoices.config";
-import { Download, Eye } from "lucide-react";
+import { getPrescriptions } from "@/config/prescription/config";
 
-const PrescriptionsTable = async () => {
-  const page = 1;
-  const limit = 2;
+import { Eye } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-  // Fetch doctors data based on page and limit
-  const invoicesResponse = await getInvoices({ page, limit });
+const PrescriptionTable = () => {
+  const [prescriptions, setPrescriptions] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const [pagination, setPagination] = useState<any>(null);
+
+  // Get the current page from the URL or default to 1
+  const page = parseInt(searchParams.get("pt-page") || "1", 10);
+  const limit = 5; // Set your desired limit
+
+  // Fetch prescription data based on page and limit
+  const fetchPrescriptions = async () => {
+    setLoading(true);
+    try {
+      const response = await getPrescriptions({ page, limit });
+      setPrescriptions(response.data);
+      setPagination(response.pagination);
+    } catch (error) {
+      console.error("Failed to fetch prescriptions:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPrescriptions();
+  }, [page, limit]);
 
   return (
-    <div className="m-1 ">
-      <Table className=" min-w-full whitespace-nowrap  ">
-        {/* Ensure the table is wider than the container for horizontal scrolling */}
+    <div className="m-1">
+      <Table className="min-w-full whitespace-nowrap">
         <TableHeader>
           <TableRow>
-            <TableHead className="font-semibold">INID</TableHead>
-            <TableHead>Patient Name</TableHead>
-            <TableHead>Payment Date</TableHead>
+            <TableHead className="font-semibold">Prescription ID</TableHead>
+
+            <TableHead>Doctor Name</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Medications</TableHead>
+
             <TableHead>Status</TableHead>
-            <TableHead>Amount</TableHead>
-            <TableHead>Payment</TableHead>
             <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoicesResponse?.data?.length > 0 &&
-            invoicesResponse?.data.map((item: any) => (
-              <TableRow key={item.id} className="hover:bg-muted">
-                <TableCell>{item.invoiceNumber} </TableCell>
+          {loading ? (
+            <TableRow>
+              <TableCell colSpan={9} className="text-center">
+                Loading...
+              </TableCell>
+            </TableRow>
+          ) : prescriptions?.length > 0 ? (
+            prescriptions.map((prescription: any) => (
+              <TableRow key={prescription.id} className="hover:bg-muted">
+                <TableCell>PR-00{prescription?.id}</TableCell>
+
                 <TableCell className="font-medium text-card-foreground/80">
                   <div className="flex gap-3 items-center">
                     <Avatar className="rounded-full">
-                      <AvatarImage src={item.billTo.image} />
+                      <AvatarImage src={prescription?.patientImage} />
                       <AvatarFallback>
-                        {item?.billTo.name.charAt(0)}
-                        {item?.billTo.name.split(" ")[1]?.charAt(0) || ""}
+                        {prescription?.doctorName.charAt(0)}
                       </AvatarFallback>
                     </Avatar>
                     <span className="text-sm text-card-foreground">
-                      {item.billTo.name}
+                      {prescription?.doctorName}
                     </span>
                   </div>
                 </TableCell>
-                <TableCell>{item.paymentDate}</TableCell>
+                <TableCell>{prescription?.date}</TableCell>
+                <TableCell>{prescription?.medications?.join(", ")}</TableCell>
+
                 <TableCell>
                   <Badge
                     variant="soft"
                     color={
-                      (item.status === "Paid" && "success") ||
-                      (item.status === "Unpaid" && "destructive") ||
+                      (prescription.status === "Active" && "success") ||
+                      (prescription.status === "Expired" && "destructive") ||
                       "default"
                     }
-                    className=" capitalize"
+                    className="capitalize"
                   >
-                    {item.status}
+                    {prescription.status}
                   </Badge>
                 </TableCell>
-
-                <TableCell>{item.amount}</TableCell>
-
-                <TableCell>{item.paymentMethod}</TableCell>
                 <TableCell className="flex justify-start">
                   <div className="flex gap-3">
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      color="success"
-                      className="h-7 w-7"
-                    >
-                      <Download className="h-4 w-4" />
-                    </Button>
-
                     <Button
                       size="icon"
                       variant="outline"
@@ -93,11 +116,30 @@ const PrescriptionsTable = async () => {
                   </div>
                 </TableCell>
               </TableRow>
-            ))}
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={9} className="text-center">
+                No prescriptions available
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
+
+      {/* Pagination Controls */}
+      {/* Pagination Controls */}
+      {pagination?.totalRecords > pagination?.perPage && (
+        <div className="mt-4">
+          <Pagination
+            currentPage={pagination?.currentPage}
+            totalPages={pagination?.totalPages}
+            queryKey="pt-page"
+          />
+        </div>
+      )}
     </div>
   );
 };
 
-export default PrescriptionsTable;
+export default PrescriptionTable;

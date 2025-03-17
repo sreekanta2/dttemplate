@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import { Download, Eye, Trash } from "lucide-react";
 import Link from "next/link";
 

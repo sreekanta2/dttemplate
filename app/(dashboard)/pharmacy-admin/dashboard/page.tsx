@@ -1,18 +1,21 @@
 import DashboardSelect from "@/components/dashboard-select";
 import DatePickerWithRange from "@/components/date-picker-with-range";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import LatestCustomers from "./components/latest-customars";
 import SplineArea from "./components/line-chart";
 import PharmacyAdminStats from "./components/ph-admin-state";
 import RevinueChart from "./components/revinue-chart";
 
-export default function PharmacyAdminDashboard() {
+export default function PharmacyAdminDashboard({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string };
+}) {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap gap-4 items-center justify-between">
         <div className="text-2xl font-medium text-default-800">
-          <h1> Welcome Admin!</h1>
+          <h1> Welcome Pharmacy Admin!</h1>
           <p className="text-base text-default-600">Dashboard</p>
         </div>
         <DatePickerWithRange />
@@ -55,16 +58,7 @@ export default function PharmacyAdminDashboard() {
         </div>
       </div>
 
-      <div className="border p-6 bg-card rounded-md space-y-2">
-        <h1 className="text-2xl font-bold     bg-card/50 text-default-600      ">
-          Latest Customers
-        </h1>
-        <hr className="pb-4" />
-        <ScrollArea className="pb-4">
-          <LatestCustomers />
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
-      </div>
+      <LatestCustomers searchParams={searchParams} />
     </div>
   );
 }

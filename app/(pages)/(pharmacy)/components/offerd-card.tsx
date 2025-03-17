@@ -27,7 +27,7 @@ const PromoCard: React.FC<PromoCardProps> = ({
   return (
     <div className="rounded-lg border overflow-hidden">
       <div
-        className={`h-full min-h-max flex flex-col md:flex-row justify-between items-center p-4 gap-4 ${color} dark:bg-card`}
+        className={`h-full md:min-h-max flex flex-col md:flex-row justify-between items-center p-4 gap-4 ${color} dark:bg-card`}
       >
         <div className="flex items-center gap-4">
           <div className="flex flex-col gap-4">
@@ -55,8 +55,8 @@ const PromoCard: React.FC<PromoCardProps> = ({
           src={image}
           alt={title}
           aspectRatio="1/1"
-          containerClass="w-32"
-          className="rounded-lg  "
+          containerClass="w-32  hidden md:block"
+          className="rounded-lg "
         />
       </div>
     </div>

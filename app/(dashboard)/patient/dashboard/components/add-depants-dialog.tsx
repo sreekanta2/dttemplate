@@ -13,7 +13,7 @@ import {
 import { Form } from "@/components/ui/form";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { SelectItem } from "@/components/ui/select";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PlusCircle } from "lucide-react";
 import { useState } from "react";

@@ -1,6 +1,7 @@
 "use client";
 
 import CustomFormField, { FormFieldType } from "@/components/custom-form-field";
+import FileUploaderRestrictions from "@/components/file-upload-reactions";
 import ResetButton from "@/components/reset-button";
 import SubmitButton from "@/components/submit-button";
 import { Form } from "@/components/ui/form";
@@ -50,9 +51,12 @@ export default function AddProductPage() {
   };
   return (
     <Form {...form}>
-      <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className="space-y-6 bg-card  p-4"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <h1 className="text-lg py-2">Add Product</h1>
-        <div className="bg-primary/10 p-4 rounded-md space-y-4">
+        <div className=" rounded-md space-y-4">
           <div className="w-full flex flex-col md:flex-row gap-4 items-start">
             <CustomFormField
               fieldType={FormFieldType.INPUT}
@@ -65,8 +69,8 @@ export default function AddProductPage() {
               fieldType={FormFieldType.SELECT}
               name="category"
               control={form.control}
-              label="Select language"
-              placeholder="Select language"
+              label="Select category"
+              placeholder="Select category"
             >
               {productCategories.map(
                 (category: { label: string; value: string }) => (
@@ -85,14 +89,6 @@ export default function AddProductPage() {
                 )
               )}
             </CustomFormField>
-            <CustomFormField
-              fieldType={FormFieldType.INPUT}
-              control={form.control}
-              name="price"
-              type="number"
-              label="Price"
-              iconAlt="Email"
-            />
           </div>
           <div className="w-full flex flex-col md:flex-row gap-4 items-start">
             <CustomFormField
@@ -104,8 +100,16 @@ export default function AddProductPage() {
             <CustomFormField
               fieldType={FormFieldType.INPUT}
               control={form.control}
+              name="regularprice"
+              type="number"
+              label="Regular Price"
+              iconAlt="Email"
+            />
+            <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
               name="discount"
-              label="Discount"
+              label="Discount Price"
             />
           </div>
           <CustomFormField
@@ -116,7 +120,7 @@ export default function AddProductPage() {
             placeholder="Write details about product"
           />
         </div>
-
+        <FileUploaderRestrictions />
         {/* Submit and Reset Buttons */}
         <div className="flex  gap-4">
           <SubmitButton variant="soft" color="info" isLoading={loading}>

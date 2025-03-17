@@ -1,4 +1,6 @@
 import Pagination from "@/components/PaginationComponents";
+import SearchInput from "@/components/SearchInput";
+import LimitSelect from "@/components/limit-select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getDoctors } from "@/config/doctors/doctors.config";
 import FavouritesDoctorCard from "./components/favourite-doctor-card";
@@ -9,18 +11,20 @@ export default async function FavouriteDoctors({
   searchParams: { [key: string]: string };
 }) {
   const page = parseInt(searchParams?.page || "1", 10);
+  const limit = parseInt(searchParams?.limit || "8", 10);
 
-  const limit = 8;
   // Fetch doctors data based on page and limit
   const doctors = await getDoctors({ page, limit });
-  console.log(doctors);
+
   return (
     <>
       <Card>
         <CardHeader className="border-none  pb-0">
-          <div className="flex items-center flex-wrap justify-between gap-4">
-            <div className="text-2xl font-medium text-default-800 ">
-              <CardTitle>Favourite Doctors</CardTitle>
+          <div className="flex flex-col md:flex-row items-center flex-wrap justify-between gap-4">
+            <CardTitle>Favourite Doctors</CardTitle>
+            <div className="flex w-full flex-wrap md:flex-nowrap lg:w-fit gap-4">
+              <SearchInput searchParamKey="q" className="w-full max-w-2xl" />
+              <LimitSelect />
             </div>
           </div>
         </CardHeader>

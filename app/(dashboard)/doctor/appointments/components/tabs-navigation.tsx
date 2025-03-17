@@ -1,6 +1,6 @@
 "use client";
 
-import DatePickerWithRange from "@/components/date-picker-with-range";
+import LimitSelect from "@/components/limit-select";
 import SearchInput from "@/components/SearchInput";
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -45,7 +45,7 @@ const TabsNavigation: FC<TabsNavigationProps> = ({ activeTab }) => {
       </TabsList>
       <div className="flex w-full flex-wrap md:flex-nowrap lg:w-fit gap-4">
         <SearchInput searchParamKey="q" className="w-full max-w-2xl" />
-        <DatePickerWithRange />
+        <LimitSelect />
       </div>
     </div>
   );

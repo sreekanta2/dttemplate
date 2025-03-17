@@ -1,5 +1,6 @@
 "use client"; // Convert to client component
 
+import Pagination from "@/components/PaginationComponents";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,14 +13,20 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getAppointments } from "@/config/appointments/appointments.config";
-import { Download, Eye } from "lucide-react";
+import { Eye } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const AppointmentTable = () => {
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(2);
   const [invoicesResponse, setInvoicesResponse] = useState<any>(null);
+  const [pagination, setPagination] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // Get the current page from the URL or default to 1
+  const page = parseInt(searchParams.get("apt-page") || "1", 10);
+  const limit = 5; // Set your desired limit
 
   // Fetch invoices data based on page and limit
   const fetchInvoices = async () => {
@@ -27,7 +34,7 @@ const AppointmentTable = () => {
     try {
       const response = await getAppointments({ page, limit });
       setInvoicesResponse(response.data);
-      console.log(response);
+      setPagination(response.pagination);
     } catch (error) {
       console.error("Failed to fetch invoices:", error);
     } finally {
@@ -39,25 +46,16 @@ const AppointmentTable = () => {
     fetchInvoices();
   }, [page, limit]);
 
-  const handleNextPage = () => {
-    setPage((prevPage) => prevPage + 1);
-  };
-
-  const handlePreviousPage = () => {
-    setPage((prevPage) => Math.max(prevPage - 1, 1));
-  };
-
   return (
     <div className="m-1">
       <Table className="min-w-full whitespace-nowrap">
         <TableHeader>
           <TableRow>
             <TableHead className="font-semibold">INID</TableHead>
-            <TableHead>Patient Name</TableHead>
+            <TableHead>Doctor Name</TableHead>
             <TableHead>Payment Date</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Amount</TableHead>
-            <TableHead>Payment</TableHead>
             <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -68,25 +66,22 @@ const AppointmentTable = () => {
                 Loading...
               </TableCell>
             </TableRow>
-          ) : invoicesResponse?.data?.length > 0 ? (
-            invoicesResponse.data.map((item: any) => (
+          ) : invoicesResponse?.length > 0 ? (
+            invoicesResponse.map((item: any) => (
               <TableRow key={item.id} className="hover:bg-muted">
-                <TableCell>{item.invoiceNumber}</TableCell>
+                <TableCell>APT-00{item?.id}</TableCell>
                 <TableCell className="font-medium text-card-foreground/80">
                   <div className="flex gap-3 items-center">
                     <Avatar className="rounded-full">
-                      <AvatarImage src={item.billTo.image} />
-                      <AvatarFallback>
-                        {item?.billTo.name.charAt(0)}
-                        {item?.billTo.name.split(" ")[1]?.charAt(0) || ""}
-                      </AvatarFallback>
+                      <AvatarImage src={item?.image} />
+                      <AvatarFallback>{item?.doctor.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <span className="text-sm text-card-foreground">
-                      {item.billTo.name}
+                      {item?.doctor}
                     </span>
                   </div>
                 </TableCell>
-                <TableCell>{item.paymentDate}</TableCell>
+                <TableCell>{item?.appointmentDate}</TableCell>
                 <TableCell>
                   <Badge
                     variant="soft"
@@ -101,17 +96,8 @@ const AppointmentTable = () => {
                   </Badge>
                 </TableCell>
                 <TableCell>{item.amount}</TableCell>
-                <TableCell>{item.paymentMethod}</TableCell>
                 <TableCell className="flex justify-start">
                   <div className="flex gap-3">
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      color="success"
-                      className="h-7 w-7"
-                    >
-                      <Download className="h-4 w-4" />
-                    </Button>
                     <Button
                       size="icon"
                       variant="outline"
@@ -134,27 +120,15 @@ const AppointmentTable = () => {
         </TableBody>
       </Table>
 
-      {/* Pagination Controls */}
-      <div className="flex justify-end gap-2 mt-4">
-        <Button
-          onClick={handlePreviousPage}
-          disabled={page === 1 || loading}
-          variant="outline"
-        >
-          Previous
-        </Button>
-        <Button
-          onClick={handleNextPage}
-          disabled={
-            !invoicesResponse?.data ||
-            invoicesResponse.data.length < limit ||
-            loading
-          }
-          variant="outline"
-        >
-          Next
-        </Button>
-      </div>
+      {pagination?.totalRecords > pagination?.perPage && (
+        <div className="mt-4">
+          <Pagination
+            currentPage={pagination?.currentPage}
+            totalPages={pagination?.totalPages}
+            queryKey="apt-page"
+          />
+        </div>
+      )}
     </div>
   );
 };

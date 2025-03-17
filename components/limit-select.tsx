@@ -26,7 +26,7 @@ export default function LimitSelect() {
     <div className="w-40">
       <Select onValueChange={handleLimitChange}>
         <SelectTrigger size="lg">
-          <SelectValue placeholder="Select limit" />
+          <SelectValue placeholder=" limit" />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="5">5</SelectItem>

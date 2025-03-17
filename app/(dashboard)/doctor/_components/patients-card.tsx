@@ -1,5 +1,5 @@
 import CustomImage from "@/components/ImageComponent";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import {
   CakeIcon,
   DropletIcon,

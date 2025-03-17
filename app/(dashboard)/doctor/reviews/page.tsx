@@ -1,5 +1,5 @@
-import DatePickerWithRange from "@/components/date-picker-with-range";
 import CustomImage from "@/components/ImageComponent";
+import LimitSelect from "@/components/limit-select";
 import Pagination from "@/components/PaginationComponents";
 import { Rating } from "@/components/ui/rating";
 import { getReviews } from "@/config/reviews/review.config";
@@ -11,7 +11,7 @@ export default async function ReviewsPageView({
 }) {
   // If searchParams is a plain object, get the page param
   const page = parseInt(searchParams.page || "1", 10);
-  const limit = 5;
+  const limit = parseInt(searchParams?.limit || "5", 10);
 
   // Fetch doctors data based on page and limit
   const reviewsResponse = await getReviews({ page, limit });
@@ -33,7 +33,7 @@ export default async function ReviewsPageView({
               />
             </div>
           </div>
-          <DatePickerWithRange />
+          <LimitSelect />
         </div>
 
         {reviewsResponse?.data?.length > 0 &&

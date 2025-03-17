@@ -1,7 +1,5 @@
 import { cn } from "@/lib/utils";
 import { useSidebar } from "@/store";
-import { Search } from "lucide-react";
-import React from "react";
 
 const MenuBar = ({
   collapsed,
@@ -56,34 +54,13 @@ const MenuBar = ({
   );
 };
 
-type VerticalHeaderProps = {
-  handleOpenSearch: () => void;
-};
-const VerticalHeader: React.FC<VerticalHeaderProps> = ({
-  handleOpenSearch,
-}) => {
+const VerticalHeader = ({}) => {
   const { collapsed, setCollapsed } = useSidebar();
-
-  const SearchButton = (
-    <div>
-      <button
-        type="button"
-        className=" inline-flex  gap-2 items-center text-default-600 text-sm"
-        onClick={handleOpenSearch}
-      >
-        <span>
-          <Search className=" h-4 w-4" />
-        </span>
-        <span className=" md:block hidden"> Search...</span>
-      </button>
-    </div>
-  );
 
   return (
     <>
       <div className="flex items-center md:gap-6 gap-3">
         {<MenuBar collapsed={collapsed} setCollapsed={setCollapsed} />}
-        {SearchButton}
       </div>
     </>
   );

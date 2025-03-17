@@ -1,6 +1,6 @@
 "use client";
 
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { CalenderCheck, User } from "../svg";

@@ -8,11 +8,10 @@ export default async function ActivePatientsContent({
   searchParams: { [key: string]: string };
 }) {
   const page = parseInt(searchParams?.page || "1", 10);
+  const limit = parseInt(searchParams?.limit || "4", 10);
 
-  const limit = 4;
   // Fetch doctors data based on page and limit
   const patients = await getPatients({ page, limit, status: true });
-  console.log(patients);
 
   return (
     <div>

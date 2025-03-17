@@ -1,5 +1,5 @@
 "use client";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import { motion, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";

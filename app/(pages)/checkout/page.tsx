@@ -1,6 +1,6 @@
 import { CheckMark } from "@/components/svg";
 import { Rating } from "@/components/ui/rating";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import Image from "next/image";
 import Link from "next/link";
 import CheckoutForm from "./components/checkout-form";

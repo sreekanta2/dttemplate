@@ -1,6 +1,6 @@
 "use server";
 
-import { getUserByEmail } from "@/config/user.config";
+import { getUserByEmail } from "@/config/user/user.config";
 import { LoginSchema } from "@/schemas/auth";
 
 import { signIn } from "next-auth/react";

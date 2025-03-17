@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 
 import {
   CopyPlus,

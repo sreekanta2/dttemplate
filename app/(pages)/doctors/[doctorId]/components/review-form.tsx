@@ -3,7 +3,7 @@ import TextareaFormField from "@/components/FormField";
 import { User } from "@/components/svg";
 import { Button } from "@/components/ui/button";
 import { Rating } from "@/components/ui/rating";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import { reviewsSchema } from "@/schemas/review";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";

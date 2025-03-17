@@ -33,7 +33,7 @@ const Header = ({ handleOpenSearch }: { handleOpenSearch: () => void }) => {
       <div className={` ${!collapsed ? "collapsed  " : "not-collapsed "}`}>
         <div className="w-full bg-card/90 backdrop-blur-lg md:px-6 px-[15px] py-[14px] border-b">
           <div className="flex justify-between items-center h-full">
-            <VerticalHeader handleOpenSearch={handleOpenSearch} />
+            <VerticalHeader />
             <NavTools isDesktop={isDesktop} />
           </div>
         </div>

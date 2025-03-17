@@ -27,7 +27,7 @@ const PrescriptionTable = () => {
 
   // Get the current page from the URL or default to 1
   const page = parseInt(searchParams.get("pt-page") || "1", 10);
-  const limit = 2; // Set your desired limit
+  const limit = 5; // Set your desired limit
 
   // Fetch prescription data based on page and limit
   const fetchPrescriptions = async () => {

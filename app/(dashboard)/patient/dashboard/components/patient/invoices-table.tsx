@@ -1,3 +1,5 @@
+"use client";
+import Pagination from "@/components/PaginationComponents";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,13 +13,36 @@ import {
 } from "@/components/ui/table";
 import { getInvoices } from "@/config/invoices/invoices.config";
 import { Download, Eye } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const InvoicesTable = async () => {
-  const page = 1;
-  const limit = 2;
+  const [invoicesResponse, setInvoicesResponse] = useState<any>(null);
+  const [pagination, setPagination] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
 
-  // Fetch doctors data based on page and limit
-  const invoicesResponse = await getInvoices({ page, limit });
+  // Get the current page from the URL or default to 1
+  const page = parseInt(searchParams.get("apt-page") || "1", 10);
+  const limit = 5; // Set your desired limit
+
+  // Fetch invoices data based on page and limit
+  const fetchInvoices = async () => {
+    setLoading(true);
+    try {
+      const response = await getInvoices({ page, limit });
+      setInvoicesResponse(response.data);
+      setPagination(response.pagination);
+    } catch (error) {
+      console.error("Failed to fetch invoices:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchInvoices();
+  }, [page, limit]);
 
   return (
     <div className="m-1 ">
@@ -35,8 +60,8 @@ const InvoicesTable = async () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoicesResponse?.data?.length > 0 &&
-            invoicesResponse?.data.map((item: any) => (
+          {invoicesResponse?.length > 0 &&
+            invoicesResponse?.map((item: any) => (
               <TableRow key={item.id} className="hover:bg-muted">
                 <TableCell>{item.invoiceNumber} </TableCell>
                 <TableCell className="font-medium text-card-foreground/80">
@@ -96,6 +121,15 @@ const InvoicesTable = async () => {
             ))}
         </TableBody>
       </Table>
+      {pagination?.totalRecords > pagination?.perPage && (
+        <div className="mt-4">
+          <Pagination
+            currentPage={pagination?.currentPage}
+            totalPages={pagination?.totalPages}
+            queryKey="apt-page"
+          />
+        </div>
+      )}
     </div>
   );
 };

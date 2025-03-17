@@ -9,7 +9,8 @@ export default async function InActivePatientContent({
 }) {
   const page = parseInt(searchParams?.page || "1", 10);
 
-  const limit = 4;
+  const limit = parseInt(searchParams?.limit || "4", 10);
+
   // Fetch doctors data based on page and limit
   const patients = await getPatients({ page, limit, status: false });
 

@@ -13,7 +13,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { Checkbox } from "./ui/checkbox";
 
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import { Upload } from "lucide-react";
 import {
   FormControl,

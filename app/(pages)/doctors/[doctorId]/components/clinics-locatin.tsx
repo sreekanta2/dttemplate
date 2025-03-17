@@ -1,5 +1,5 @@
 import BasicMap from "@/components/maps-google/basic-map";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import Image from "next/image";
 
 interface ClinicProps {

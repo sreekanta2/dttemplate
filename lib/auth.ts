@@ -1,4 +1,4 @@
-import { getUserByEmail } from "@/config/user.config";
+import { getUserByEmail } from "@/config/user/user.config";
 import { UserRole } from "@/types/common";
 import { Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";

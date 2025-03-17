@@ -3,6 +3,7 @@ import CustomFormField, { FormFieldType } from "@/components/custom-form-field";
 import SubmitButton from "@/components/submit-button";
 import { SiteLogo } from "@/components/svg";
 import { Form } from "@/components/ui/form";
+import { SelectItem } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { LoginSchema } from "@/schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,7 +27,7 @@ const LogInForm = () => {
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: "",
-      password: "",
+      password: "123456",
     },
   });
 
@@ -52,10 +53,6 @@ const LogInForm = () => {
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center px-4">
-      <ul className="my-4">
-        <li>email: doctor@example.com, password: 123456</li>
-        <li>email: patient@example.com, password: 123456</li>
-      </ul>
       <div className="w-full h-fit p-6 rounded-md max-w-[550px] border bg-card">
         <Link href="/" className="flex justify-center mb-4">
           <SiteLogo className="h-10 w-10 2xl:w-14 2xl:h-14 text-primary" />
@@ -68,13 +65,26 @@ const LogInForm = () => {
           >
             <div className="relative">
               <CustomFormField
-                fieldType={FormFieldType.INPUT}
+                fieldType={FormFieldType.SELECT}
                 name="email"
                 control={form.control}
                 placeholder="Email"
                 label="Email"
                 type="email"
-              />
+              >
+                <SelectItem value="admin@example.com">
+                  admin@example.com(Recommended)
+                </SelectItem>
+                <SelectItem value="doctor@example.com">
+                  doctor@example.com
+                </SelectItem>
+                <SelectItem value="patient@example.com">
+                  patient@example.com
+                </SelectItem>
+                <SelectItem value="pharmacy@example.com">
+                  pharmacy@example.com
+                </SelectItem>
+              </CustomFormField>
             </div>
             <div className="relative">
               <CustomFormField

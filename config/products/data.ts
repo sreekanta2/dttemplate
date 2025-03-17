@@ -27,6 +27,7 @@ export const productData = [
     warning: "Not recommended for pregnant women and lactating mothers.",
     precaution:
       "Dispose of after 3 years from the manufactured date. Do not use after expiry.",
+    expire: "31-12-2023",
   },
   {
     id: 2,
@@ -40,6 +41,7 @@ export const productData = [
     manufacturer: "Dabur",
     ratings: 4.4,
     stock: 35,
+    expire: "31-12-2023",
   },
   {
     id: 3,
@@ -53,7 +55,8 @@ export const productData = [
     ingredients: ["Jamun", "Karela", "Neem", "Methi"],
     manufacturer: "Patanjali",
     ratings: 4.5,
-    stock: 50,
+    stock: 0,
+    expire: "31-12-2026",
   },
   {
     id: 4,
@@ -68,6 +71,7 @@ export const productData = [
     manufacturer: "Zandu",
     ratings: 4.3,
     stock: 45,
+    expire: "31-12-2026",
   },
   {
     id: 5,
@@ -82,6 +86,7 @@ export const productData = [
     manufacturer: "Himalaya",
     ratings: 4.7,
     stock: 30,
+    expire: "31-12-2024",
   },
   {
     id: 6,
@@ -96,6 +101,7 @@ export const productData = [
     manufacturer: "Baidyanath",
     ratings: 4.2,
     stock: 55,
+    expire: "31-12-2026",
   },
   {
     id: 7,
@@ -110,6 +116,7 @@ export const productData = [
     manufacturer: "Sri Sri Tattva",
     ratings: 4.6,
     stock: 38,
+    expire: "31-12-2025",
   },
   {
     id: 8,
@@ -122,7 +129,8 @@ export const productData = [
     ingredients: ["Jatamansi", "Brahmi", "Tagara", "Chamomile"],
     manufacturer: "Hamdard",
     ratings: 3.4,
-    stock: 42,
+    stock: 0,
+    expire: "31-12-2027",
   },
   {
     id: 9,
@@ -137,6 +145,7 @@ export const productData = [
     manufacturer: "Patanjali",
     ratings: 4.5,
     stock: 37,
+    expire: "31-12-2026",
   },
   {
     id: 10,
@@ -150,6 +159,7 @@ export const productData = [
     manufacturer: "Himalaya",
     ratings: 3.8,
     stock: 28,
+    expire: "31-12-2025",
   },
   {
     id: 11,
@@ -164,5 +174,6 @@ export const productData = [
     manufacturer: "Hamdard Laboratories",
     ratings: 4.6,
     stock: 40,
+    expire: "31-12-2023",
   },
 ];

@@ -3,7 +3,6 @@ import Header from "@/components/partials/header";
 import Sidebar from "@/components/partials/sidebar";
 import React from "react";
 
-import HeaderSearch from "@/components/header-search";
 import LayoutLoader from "@/components/layout-loader";
 import Footer from "@/components/partials/footer";
 import MobileSidebar from "@/components/partials/sidebar/mobile-sidebar";
@@ -98,7 +97,6 @@ const LayoutWrapper = ({
       </motion.div>
 
       <MobileSidebar className="left-[300px]" />
-      <HeaderSearch open={open} setOpen={setOpen} />
     </>
   );
 };

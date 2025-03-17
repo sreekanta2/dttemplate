@@ -17,7 +17,7 @@ export const mainMenu: MenuItemProps[] = [
   },
   {
     title: "Pharmacy",
-    href: "pharmacy",
+    href: "/pharmacy",
   },
   {
     title: "Blogs",

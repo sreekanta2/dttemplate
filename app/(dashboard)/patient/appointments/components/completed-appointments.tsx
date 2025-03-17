@@ -8,8 +8,8 @@ export default async function CompletedAnointmentContent({
   searchParams: { [key: string]: string };
 }) {
   const page = parseInt(searchParams?.page || "1", 10);
+  const limit = parseInt(searchParams?.limit || "6", 10);
 
-  const limit = 6;
   // Fetch doctors data based on page and limit
   const appointments = await getAppointments({ page, limit, completed: true });
 

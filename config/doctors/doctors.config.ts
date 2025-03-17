@@ -34,7 +34,7 @@ export const getDoctor = async (
   limit: number
 ) => {
   // Find doctor by ID
-  const doctor = doctorsData.find((item) => item.id === doctorId);
+  const doctor = doctorsData.find((item) => item.id === "1");
   if (!doctor) {
     return { status: "fail", message: "Doctor not found" };
   }

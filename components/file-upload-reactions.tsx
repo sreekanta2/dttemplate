@@ -92,9 +92,9 @@ const FileUploaderRestrictions = () => {
 
   return (
     <Fragment>
-      <div {...getRootProps({ className: "dropzone" })}>
+      <div {...getRootProps({ className: "dropzone bg-muted" })}>
         <input {...getInputProps()} />
-        <div className=" w-full text-center border-dashed border  rounded-md py-4 flex  items-center flex-col">
+        <div className=" w-full text-center border-dashed border border-primary rounded-md py-4 flex  items-center flex-col">
           <div className="h-12 w-12 inline-flex rounded-md bg-muted items-center justify-center mb-3">
             <Upload className="h-6 w-6 text-default-500" />
           </div>

@@ -6,7 +6,7 @@ import {
   Clock,
   CreditCard,
   DollarSign,
-  FileText,
+  File,
   FormInput,
   Heart,
   Layout,
@@ -476,8 +476,8 @@ export const patientConfig: MenuItemProps[] = [
     icon: UserPlus,
   },
   {
-    title: "Add Medical Records",
-    href: "add-medical-records",
+    title: "Medical Records",
+    href: "medical-records",
     icon: Receipt,
   },
   {
@@ -497,22 +497,9 @@ export const patientConfig: MenuItemProps[] = [
     icon: User,
   },
   {
-    title: "Invoices",
-    href: "invoices",
-    icon: FileText,
-    child: [
-      {
-        title: "Create Invoice",
-        href: "create-invoice",
-        icon: DollarSign,
-      },
-
-      {
-        title: " Invoices List",
-        href: "invoice-list",
-        icon: Heart,
-      },
-    ],
+    title: " Invoices List",
+    href: "invoice-list",
+    icon: File,
   },
 
   {

@@ -20,7 +20,7 @@ import {
 import { Form } from "@/components/ui/form";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SelectItem } from "@/components/ui/select";
-import { avatar } from "@/config/user.config";
+import { avatar } from "@/config/user/user.config";
 import { Edit } from "lucide-react";
 import { useState, useTransition } from "react";
 

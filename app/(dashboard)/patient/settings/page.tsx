@@ -28,8 +28,8 @@ const SettingsPage = () => {
           <h2 className="text-xl font-semibold text-default-700 mb-4">
             Profile Information
           </h2>
-          <div className="flex items-center space-x-6">
-            <div className="relative">
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="relative w-fit">
               <img
                 src={profilePicture}
                 alt="Profile"
