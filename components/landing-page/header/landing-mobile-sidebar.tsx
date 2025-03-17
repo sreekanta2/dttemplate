@@ -75,7 +75,7 @@ const LandingMobileSidebar = ({
 
         <div className="mt-auto mb-2">
           <Separator className="border-1" />
-          {session.data?.user ? (
+          {!session.data?.user ? (
             <div className="m-4">
               <Button className="w-full">
                 <Link

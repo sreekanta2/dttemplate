@@ -162,7 +162,7 @@ const MobileSidebar = ({ className }: { className?: string }) => {
       {mobileMenu && (
         <div
           onClick={() => setMobileMenu(false)}
-          className="overlay bg-black/60 backdrop-filter backdrop-blur-sm opacity-100 fixed inset-0 z-[9999]"
+          className="overlay bg-black/60 backdrop-filter backdrop-blur-sm opacity-100 fixed inset-0 z-[999]"
         ></div>
       )}
     </>
