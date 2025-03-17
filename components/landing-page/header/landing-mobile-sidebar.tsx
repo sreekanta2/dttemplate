@@ -59,9 +59,7 @@ const LandingMobileSidebar = ({
             </div>
           )}
 
-          <ul
-            className={cn("space-y-1", { "space-y-2 text-center": collapsed })}
-          >
+          <ul className={cn("space-y-1", { "space-y-2 my-2 ": collapsed })}>
             {mainMenu.map((item, i) => (
               <li key={`menu_key_${i}`}>
                 {!item.child && !item.isHeader && (
@@ -77,8 +75,8 @@ const LandingMobileSidebar = ({
 
         <div className="mt-auto mb-2">
           <Separator className="border-1" />
-          {!session.data?.user ? (
-            <div className="mx-4">
+          {session.data?.user ? (
+            <div className="m-4">
               <Button className="w-full">
                 <Link
                   href="/auth/login"
@@ -89,7 +87,7 @@ const LandingMobileSidebar = ({
               </Button>
             </div>
           ) : (
-            <div className="mx-4">
+            <div className="m-4 ">
               <div className="p-2 flex items-center gap-2">
                 <Avatar>
                   <AvatarImage src={session?.data?.user?.image || ""} />
@@ -120,7 +118,7 @@ const LandingMobileSidebar = ({
                   {item.name}
                 </Link>
               ))}
-              <LogoutButton className="hover:bg-primary hover:text-default-100 p-2 rounded-md w-full" />
+              <LogoutButton className="hover:bg-primary hover:text-default-100  rounded-md w-full" />
             </div>
           )}
         </div>

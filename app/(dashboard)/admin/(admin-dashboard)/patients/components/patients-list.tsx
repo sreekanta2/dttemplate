@@ -15,9 +15,8 @@ import { Icon } from "@iconify/react";
 
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useRef, useState } from "react";
-import { patients, PatientsRows } from "../../data";
 
-const PatientsList = () => {
+const PatientsList = ({ patients = [] }: { patients: any }) => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const selectAllRef = useRef<HTMLButtonElement>(null); // Use HTMLButtonElement
 
@@ -35,7 +34,7 @@ const PatientsList = () => {
     if (selectedRows.length === patients.length) {
       setSelectedRows([]);
     } else {
-      setSelectedRows(patients.map((row) => row.id));
+      setSelectedRows(patients.map((row: any) => row.id));
     }
   };
 
@@ -46,7 +45,7 @@ const PatientsList = () => {
   };
 
   return (
-    <Table className="w-[800px] lg:w-full">
+    <Table className="min-w-full whitespace-nowrap">
       <TableHeader>
         <TableRow>
           <TableHead>
@@ -82,49 +81,44 @@ const PatientsList = () => {
       </TableHeader>
 
       <TableBody>
-        {patients.map((item: PatientsRows) => (
+        {patients.map((patient: any) => (
           <TableRow
-            key={item.id}
+            key={patient.id}
             className="hover:bg-muted"
-            data-state={selectedRows.includes(item.id) ? "selected" : undefined}
+            data-state={
+              selectedRows.includes(patient.id) ? "selected" : undefined
+            }
           >
             <TableCell>
               <Checkbox
-                checked={selectedRows.includes(item.id)}
-                onCheckedChange={() => handleRowSelect(item.id)}
+                checked={selectedRows.includes(patient.id)}
+                onCheckedChange={() => handleRowSelect(patient.id)}
               />
             </TableCell>
             <TableCell className="font-medium text-card-foreground/80">
-              <div className="flex gap-3 items-center">
+              <div className="flex gap-3 patients-center">
                 <Avatar className="rounded-full">
-                  <AvatarImage src={item.avatar} />
+                  <AvatarImage src={patient.image} />
                   <AvatarFallback>AB</AvatarFallback>
                 </Avatar>
                 <span className="text-sm text-card-foreground">
-                  {item.name}
+                  {patient.name}
                 </span>
               </div>
             </TableCell>
 
-            <TableCell>{item.phone}</TableCell>
+            <TableCell>{patient.phoneNumber}</TableCell>
             <TableCell>
-              {item.lastVisit
-                ? new Date(item.lastVisit * 1000).toLocaleDateString("en-GB")
-                : "N/A"}
+              {patient.lastVisit ? patient.lastVisit : "N/A"}
             </TableCell>
 
             <TableCell>
               <Badge
                 variant="soft"
-                color={
-                  (item.status === "paid" && "success") ||
-                  (item.status === "unpaid" && "destructive") ||
-                  (item.status === "refund" && "warning") ||
-                  "default"
-                }
+                color={(patient?.isActive && "success") || "destructive"}
                 className=" capitalize"
               >
-                {item.status}
+                {patient?.isActive ? "active" : "inactive"}
               </Badge>
             </TableCell>
 

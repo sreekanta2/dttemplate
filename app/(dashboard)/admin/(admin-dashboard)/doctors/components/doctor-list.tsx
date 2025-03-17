@@ -15,12 +15,8 @@ import { Icon } from "@iconify/react";
 
 import { Rating } from "@/components/ui/rating";
 import { useEffect, useRef, useState } from "react";
-import { doctors, DoctorsRows } from "../../data";
 
-type TDoctorListProps = {
-  className?: string;
-};
-const DoctorList = ({ className }: TDoctorListProps) => {
+const DoctorList = ({ doctors = [] }: any) => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const selectAllRef = useRef<HTMLButtonElement>(null); // Use HTMLButtonElement
 
@@ -38,7 +34,7 @@ const DoctorList = ({ className }: TDoctorListProps) => {
     if (selectedRows.length === doctors.length) {
       setSelectedRows([]);
     } else {
-      setSelectedRows(doctors.map((row) => row.id));
+      setSelectedRows(doctors.map((row: any) => row.id));
     }
   };
 
@@ -49,7 +45,7 @@ const DoctorList = ({ className }: TDoctorListProps) => {
   };
 
   return (
-    <Table className="md:w-[900px] lg:w-full">
+    <Table className="min-w-full whitespace-nowrap">
       <TableHeader>
         <TableRow>
           <TableHead className="text-left">
@@ -85,34 +81,40 @@ const DoctorList = ({ className }: TDoctorListProps) => {
       </TableHeader>
 
       <TableBody>
-        {doctors.map((item: DoctorsRows) => (
+        {doctors.map((doctor: any) => (
           <TableRow
-            key={item.id}
+            key={doctor.id}
             className="hover:bg-muted"
-            data-state={selectedRows.includes(item.id) ? "selected" : undefined}
+            data-state={
+              selectedRows.includes(doctor.id) ? "selected" : undefined
+            }
           >
             <TableCell>
               <Checkbox
-                checked={selectedRows.includes(item.id)}
-                onCheckedChange={() => handleRowSelect(item.id)}
+                checked={selectedRows.includes(doctor.id)}
+                onCheckedChange={() => handleRowSelect(doctor.id)}
               />
             </TableCell>
             <TableCell className="font-medium text-card-foreground/80">
-              <div className="flex gap-3 items-center">
+              <div className="flex gap-3 doctors-center">
                 <Avatar className="rounded-full">
-                  <AvatarImage src={item.avatar} />
+                  <AvatarImage src={doctor?.user?.image} />
                   <AvatarFallback>AB</AvatarFallback>
                 </Avatar>
                 <span className="text-sm text-card-foreground">
-                  {item.name}
+                  {doctor?.user?.name}
                 </span>
               </div>
             </TableCell>
 
-            <TableCell>{item.specialty}</TableCell>
-            <TableCell>{item.earned}</TableCell>
+            <TableCell>{doctor?.user?.specialties}</TableCell>
+            <TableCell>{doctor?.user?.earn}</TableCell>
             <TableCell className="p-0 m-0">
-              <Rating value={2} readOnly className="gap-x-0.5 max-w-[100px]" />
+              <Rating
+                value={doctor?.reviews[0]?.rating}
+                readOnly
+                className="gap-x-0.5 max-w-[100px]"
+              />
             </TableCell>
 
             <TableCell className="flex justify-end">

@@ -10,6 +10,7 @@ export const patients = [
     bloodGroup: "O+",
     weight: 70,
     isActive: true,
+    lastVisit: "2022-02-02",
     image: "/images/avatar/avatar-1.jpg",
   },
   {
@@ -21,9 +22,11 @@ export const patients = [
     dateOfBirth: "1992-08-22",
     gender: "Female",
     bloodGroup: "A-",
+
     weight: 60,
     isActive: false,
     image: "/images/avatar/avatar-2.jpg",
+    lastVisit: "2022-03-03",
   },
   {
     id: 3,
@@ -37,6 +40,7 @@ export const patients = [
     weight: 80,
     isActive: false,
     image: "/images/avatar/avatar-3.jpg",
+    lastVisit: "2022-04-04",
   },
   {
     id: 4,
@@ -50,6 +54,7 @@ export const patients = [
     weight: 55,
     isActive: true,
     image: "/images/avatar/avatar-4.jpg",
+    lastVisit: "2022-05-05",
   },
   {
     id: 5,
@@ -63,6 +68,7 @@ export const patients = [
     weight: 90,
     isActive: true,
     image: "/images/avatar/avatar-5.jpg",
+    lastVisit: "2022-06-06",
   },
   {
     id: 6,
@@ -76,6 +82,7 @@ export const patients = [
     weight: 50,
     isActive: false,
     image: "/images/avatar/avatar-6.jpg",
+    lastVisit: "2022-07-07",
   },
   {
     id: 7,
@@ -89,6 +96,7 @@ export const patients = [
     weight: 85,
     isActive: true,
     image: "/images/avatar/avatar-7.jpg",
+    lastVisit: "2022-08-08",
   },
   {
     id: 8,
@@ -102,6 +110,7 @@ export const patients = [
     weight: 58,
     isActive: false,
     image: "/images/avatar/avatar-8.jpg",
+    lastVisit: "2022-09-09",
   },
   {
     id: 9,
@@ -115,6 +124,7 @@ export const patients = [
     weight: 75,
     isActive: true,
     image: "/images/avatar/avatar-9.jpg",
+    lastVisit: "2022-10-10",
   },
   {
     id: 10,
@@ -128,6 +138,7 @@ export const patients = [
     weight: 54,
     isActive: false,
     image: "/images/avatar/avatar-10.jpg",
+    lastVisit: "2022-11-11",
   },
   {
     id: 11,
@@ -141,6 +152,7 @@ export const patients = [
     weight: 88,
     isActive: true,
     image: "/images/avatar/avatar-11.jpg",
+    lastVisit: "2022-12-12",
   },
   {
     id: 12,
@@ -154,6 +166,7 @@ export const patients = [
     weight: 59,
     isActive: false,
     image: "/images/avatar/avatar-12.jpg",
+    lastVisit: "2023-01-01",
   },
   {
     id: 13,
@@ -167,6 +180,7 @@ export const patients = [
     weight: 78,
     isActive: true,
     image: "/images/avatar/avatar-1.jpg",
+    lastVisit: "2023-02-02",
   },
   {
     id: 14,
@@ -180,6 +194,7 @@ export const patients = [
     weight: 57,
     isActive: false,
     image: "/images/avatar/avatar-2.jpg",
+    lastVisit: "2023-03-03",
   },
   {
     id: 15,
@@ -193,5 +208,6 @@ export const patients = [
     weight: 82,
     isActive: true,
     image: "/images/avatar/avatar-3.jpg",
+    lastVisit: "2023-04-04",
   },
 ];

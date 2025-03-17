@@ -64,7 +64,7 @@ export default function AdminSettingsPage() {
       {/* <Image src={`../../../../public/`} alt="" width={500} height={500} /> */}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="w-fit">
+          <div className="w-fit space-y-4">
             <CustomFormField
               fieldType={FormFieldType.INPUT}
               control={form.control}

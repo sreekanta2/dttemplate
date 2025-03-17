@@ -17,7 +17,7 @@ export default function LogoutButton({ className }: LogoutButtonProps) {
     <button
       type="button"
       onClick={handleSignOut}
-      className={`w-full flex gap-3  text-default-700 text-sm capitalize px-[12px] font-medium py-3 rounded cursor-pointer hover:bg-primary hover:text-primary-foreground ${className}`}
+      className={`w-full flex gap-1  text-default-700 text-sm capitalize px-[10px] items-center font-medium py-2 rounded cursor-pointer hover:bg-primary hover:text-default-100 ${className}`}
     >
       <LogOut size={16} />
       Logout

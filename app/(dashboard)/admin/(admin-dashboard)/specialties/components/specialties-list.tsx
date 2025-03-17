@@ -45,7 +45,7 @@ export default function SpecialtiesList() {
   };
 
   return (
-    <Table className="w-[500px] mx-auto lg:w-full">
+    <Table className="min-w-full whitespace-nowrap">
       <TableHeader>
         <TableRow>
           <TableHead>

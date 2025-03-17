@@ -16,9 +16,8 @@ import { Icon } from "@iconify/react";
 import { Badge } from "@/components/ui/badge";
 import { Rating } from "@/components/ui/rating";
 import { useEffect, useRef, useState } from "react";
-import { reviews, ReviewsRows } from "../../data";
 
-export default function ReviewsList() {
+export default function ReviewsList({ reviews = [] }: { reviews: any[] }) {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const selectAllRef = useRef<HTMLButtonElement>(null); // Use HTMLButtonElement
 
@@ -85,7 +84,7 @@ export default function ReviewsList() {
       </TableHeader>
 
       <TableBody>
-        {reviews.map((review: ReviewsRows) => (
+        {reviews.map((review: any) => (
           <TableRow
             key={review.id}
             className="hover:bg-muted"

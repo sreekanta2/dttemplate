@@ -15,9 +15,8 @@ import { Icon } from "@iconify/react";
 
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useRef, useState } from "react";
-import { AppointmentRows, appointments } from "../../data";
 
-const AppointmentList = () => {
+const AppointmentList = ({ appointments }: { appointments: any }) => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const selectAllRef = useRef<HTMLButtonElement>(null); // Use HTMLButtonElement
 
@@ -35,7 +34,7 @@ const AppointmentList = () => {
     if (selectedRows.length === appointments.length) {
       setSelectedRows([]);
     } else {
-      setSelectedRows(appointments.map((row) => row.id));
+      setSelectedRows(appointments.map((row: any) => row.id));
     }
   };
 
@@ -46,7 +45,7 @@ const AppointmentList = () => {
   };
 
   return (
-    <Table className="w-[1080px]">
+    <Table className="min-w-full whitespace-nowrap">
       <TableHeader>
         <TableRow>
           <TableHead>
@@ -84,7 +83,7 @@ const AppointmentList = () => {
       </TableHeader>
 
       <TableBody>
-        {appointments.map((appointment: AppointmentRows) => (
+        {appointments.map((appointment: any) => (
           <TableRow
             key={appointment.id}
             className="hover:bg-muted"
@@ -101,32 +100,30 @@ const AppointmentList = () => {
             <TableCell className="font-medium text-card-foreground/80">
               <div className="flex gap-3 appointments-center">
                 <Avatar className="rounded-full">
-                  <AvatarImage src={appointment.doctor.avatar} />
+                  <AvatarImage src={appointment?.image} />
                   <AvatarFallback>AB</AvatarFallback>
                 </Avatar>
                 <span className="text-sm text-card-foreground">
-                  {appointment.doctor.name}
+                  {appointment.doctor}
                 </span>
               </div>
             </TableCell>
 
-            <TableCell>{appointment.doctor.specialty}</TableCell>
+            <TableCell>{appointment?.department}</TableCell>
             <TableCell className="font-medium text-card-foreground/80">
               <div className="flex gap-3 appointments-center">
                 <Avatar className="rounded-full">
-                  <AvatarImage src={appointment.patient.avatar} />
+                  <AvatarImage src={appointment.images} />
                   <AvatarFallback>AB</AvatarFallback>
                 </Avatar>
                 <span className="text-sm text-card-foreground">
-                  {appointment.patient.name}
+                  {appointment.patientName}
                 </span>
               </div>
             </TableCell>
             <TableCell>
               {appointment.appointmentDate
-                ? new Date(
-                    appointment.appointmentDate * 1000
-                  ).toLocaleDateString("en-GB")
+                ? appointment.appointmentDate
                 : "N/A"}
             </TableCell>
 
@@ -134,20 +131,16 @@ const AppointmentList = () => {
               <Badge
                 variant="soft"
                 color={
-                  (appointment.appointmentStatus === "confirm" && "default") ||
-                  (appointment.appointmentStatus === "cancelled" &&
-                    "destructive") ||
-                  (appointment.appointmentStatus === "pending" && "warning") ||
-                  (appointment.appointmentStatus === "completed" &&
-                    "success") ||
+                  (appointment?.status === "Paid" && "success") ||
+                  (appointment?.status === "Unpaid" && "warning") ||
                   "default"
                 }
                 className=" capitalize"
               >
-                {appointment.appointmentStatus}
+                {appointment?.status}
               </Badge>
             </TableCell>
-            <TableCell>{appointment.appointmentAmount}</TableCell>
+            <TableCell>{appointment.amount}</TableCell>
             <TableCell className="flex justify-end">
               <div className="flex gap-3">
                 <Button

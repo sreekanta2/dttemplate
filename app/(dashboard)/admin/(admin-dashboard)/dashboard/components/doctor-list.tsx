@@ -1,5 +1,3 @@
-"use client";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Table,
@@ -11,14 +9,12 @@ import {
 } from "@/components/ui/table";
 
 import { Rating } from "@/components/ui/rating";
-import { DoctorsRows, doctors } from "../../data";
+import { getDoctors } from "@/config/doctors/doctors.config";
 
-type TDoctorListProps = {
-  className?: string;
-};
-const DoctorList = ({ className }: TDoctorListProps) => {
+const DoctorList = async () => {
+  const doctors = await getDoctors({ page: 1, limit: 5 });
   return (
-    <Table className="w-[500px]">
+    <Table className="min-w-full whitespace-nowrap">
       <TableHeader>
         <TableRow>
           <TableHead className="font-semibold">Doctor Name</TableHead>
@@ -30,27 +26,32 @@ const DoctorList = ({ className }: TDoctorListProps) => {
       </TableHeader>
 
       <TableBody>
-        {doctors.map((item: DoctorsRows) => (
-          <TableRow key={item.id} className="hover:bg-muted">
-            <TableCell className="font-medium text-card-foreground/80">
-              <div className="flex gap-3 items-center">
-                <Avatar className="rounded-full">
-                  <AvatarImage src={item.avatar} />
-                  <AvatarFallback>AB</AvatarFallback>
-                </Avatar>
-                <span className="text-sm text-card-foreground">
-                  {item.name}
-                </span>
-              </div>
-            </TableCell>
+        {doctors?.data?.length > 0 &&
+          doctors?.data.map((doctor: any) => (
+            <TableRow key={doctor.id} className="hover:bg-muted">
+              <TableCell className="font-medium text-card-foreground/80">
+                <div className="flex gap-3 items-center">
+                  <Avatar className="rounded-full">
+                    <AvatarImage src={doctor?.user?.image} />
+                    <AvatarFallback>AB</AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm text-card-foreground">
+                    {doctor?.user?.name}
+                  </span>
+                </div>
+              </TableCell>
 
-            <TableCell>{item.specialty}</TableCell>
-            <TableCell>{item.earned}</TableCell>
-            <TableCell className="p-0 m-0">
-              <Rating value={2} readOnly className="gap-x-0.5 max-w-[100px]" />
-            </TableCell>
-          </TableRow>
-        ))}
+              <TableCell>{doctor?.user?.specialties}</TableCell>
+              <TableCell>{doctor?.user?.earned}</TableCell>
+              <TableCell className="p-0 m-0">
+                <Rating
+                  value={doctor?.reviews[0]?.rating}
+                  readOnly
+                  className="gap-x-0.5 max-w-[100px]"
+                />
+              </TableCell>
+            </TableRow>
+          ))}
       </TableBody>
     </Table>
   );

@@ -55,7 +55,7 @@ const PromoCard: React.FC<PromoCardProps> = ({
           src={image}
           alt={title}
           aspectRatio="1/1"
-          containerClass="w-44"
+          containerClass="w-32"
           className="rounded-lg  "
         />
       </div>

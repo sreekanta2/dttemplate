@@ -13,14 +13,14 @@ export const mainMenu: MenuItemProps[] = [
   {
     title: "Doctors",
 
-    href: "/doctors",
+    href: "doctors",
   },
   {
     title: "Pharmacy",
-    href: "/pharmacy",
+    href: "pharmacy",
   },
   {
     title: "Blogs",
-    href: "/blogs",
+    href: "blogs",
   },
 ];

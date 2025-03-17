@@ -1,5 +1,3 @@
-"use client";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Table,
@@ -11,11 +9,12 @@ import {
 } from "@/components/ui/table";
 
 import { Badge } from "@/components/ui/badge";
-import { PatientsRows, patients } from "../../data";
+import { getPatients } from "@/config/patients/config";
 
-const PatientsList = () => {
+const PatientsList = async () => {
+  const patients = await getPatients({ page: 1, limit: 5 });
   return (
-    <Table className="w-[550px]">
+    <Table className="min-w-full whitespace-nowrap">
       <TableHeader>
         <TableRow>
           <TableHead className="font-semibold">Patient Name</TableHead>
@@ -27,43 +26,37 @@ const PatientsList = () => {
       </TableHeader>
 
       <TableBody>
-        {patients.map((item: PatientsRows) => (
-          <TableRow key={item.id} className="hover:bg-muted">
-            <TableCell className="font-medium text-card-foreground/80">
-              <div className="flex gap-3 items-center">
-                <Avatar className="rounded-full">
-                  <AvatarImage src={item.avatar} />
-                  <AvatarFallback>AB</AvatarFallback>
-                </Avatar>
-                <span className="text-sm text-card-foreground">
-                  {item.name}
-                </span>
-              </div>
-            </TableCell>
+        {patients?.data?.length > 0 &&
+          patients.data.map((patient: any) => (
+            <TableRow key={patient.id} className="hover:bg-muted">
+              <TableCell className="font-medium text-card-foreground/80">
+                <div className="flex gap-3 items-center">
+                  <Avatar className="rounded-full">
+                    <AvatarImage src={patient?.image} />
+                    <AvatarFallback>AB</AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm text-card-foreground">
+                    {patient?.name}
+                  </span>
+                </div>
+              </TableCell>
 
-            <TableCell>{item.phone}</TableCell>
-            <TableCell>
-              {item.lastVisit
-                ? new Date(item.lastVisit * 1000).toLocaleDateString("en-GB")
-                : "N/A"}
-            </TableCell>
+              <TableCell>{patient?.phoneNumber}</TableCell>
+              <TableCell>
+                {patient?.lastVisit ? patient?.lastVisit : "N/A"}
+              </TableCell>
 
-            <TableCell>
-              <Badge
-                variant="soft"
-                color={
-                  (item.status === "paid" && "success") ||
-                  (item.status === "unpaid" && "destructive") ||
-                  (item.status === "refund" && "warning") ||
-                  "default"
-                }
-                className=" capitalize"
-              >
-                {item.status}
-              </Badge>
-            </TableCell>
-          </TableRow>
-        ))}
+              <TableCell>
+                <Badge
+                  variant="soft"
+                  color={(patient?.isActive && "success") || "destructive"}
+                  className=" capitalize"
+                >
+                  {patient?.isActive ? "active" : "inactive"}
+                </Badge>
+              </TableCell>
+            </TableRow>
+          ))}
       </TableBody>
     </Table>
   );

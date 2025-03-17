@@ -15,9 +15,12 @@ import { Icon } from "@iconify/react";
 
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useRef, useState } from "react";
-import { transactions } from "../../data";
 
-export default function TransactionsList() {
+export default function TransactionsList({
+  transactions = [],
+}: {
+  transactions: any[];
+}) {
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const selectAllRef = useRef<HTMLButtonElement>(null); // Use HTMLButtonElement
 
@@ -35,7 +38,7 @@ export default function TransactionsList() {
     if (selectedRows.length === transactions.length) {
       setSelectedRows([]);
     } else {
-      setSelectedRows(transactions.map((row) => row.id));
+      setSelectedRows(transactions.map((row: any) => row.id));
     }
   };
 
@@ -96,28 +99,26 @@ export default function TransactionsList() {
                 onCheckedChange={() => handleRowSelect(transaction?.id)}
               />
             </TableCell>
-            <TableCell>{transaction?.id}</TableCell>
-            <TableCell>{transaction?.patient?.id}</TableCell>
+            <TableCell>{transaction?.invoiceNumber}</TableCell>
+            <TableCell>PI-0{transaction?.id}</TableCell>
             <TableCell className="font-medium text-card-foreground/80">
               <div className="flex gap-3 specialtiys-center">
                 <Avatar className="rounded-full">
-                  <AvatarImage src={transaction?.patient?.avatar} />
+                  <AvatarImage src={transaction?.bilTo?.image} />
                   <AvatarFallback>AB</AvatarFallback>
                 </Avatar>
                 <span className="text-sm text-card-foreground">
-                  {transaction?.patient?.name}
+                  {transaction?.image?.name}
                 </span>
               </div>
             </TableCell>
-            <TableCell>{transaction?.totalAmount}</TableCell>
+            <TableCell>{transaction?.amount}</TableCell>
             <TableCell>
               <Badge
                 variant="soft"
                 color={
-                  (transaction.status === "paid" && "default") ||
-                  (transaction.status === "cancelled" && "destructive") ||
-                  (transaction.status === "pending" && "warning") ||
-                  (transaction.status === "refunded" && "destructive") ||
+                  (transaction.status === "Paid" && "success") ||
+                  (transaction.status === "Unpaid" && "warning") ||
                   "default"
                 }
                 className=" capitalize"

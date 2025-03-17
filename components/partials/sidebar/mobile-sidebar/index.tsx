@@ -114,7 +114,7 @@ const MobileSidebar = ({ className }: { className?: string }) => {
         >
           <ul
             className={cn("", {
-              " space-y-2 text-center": collapsed,
+              " space-y-2 ": collapsed,
             })}
           >
             {menus.map((item, i) => (
@@ -162,7 +162,7 @@ const MobileSidebar = ({ className }: { className?: string }) => {
       {mobileMenu && (
         <div
           onClick={() => setMobileMenu(false)}
-          className="overlay bg-black/60 backdrop-filter backdrop-blur-sm opacity-100 fixed inset-0 z-[999]"
+          className="overlay bg-black/60 backdrop-filter backdrop-blur-sm opacity-100 fixed inset-0 z-[9999]"
         ></div>
       )}
     </>

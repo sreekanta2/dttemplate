@@ -12,9 +12,9 @@ export const getPatients = async ({
 }) => {
   let filteredData;
   // console.log(isActive);
-  if (status) {
+  if (status === true) {
     filteredData = patients.filter((patient) => patient.isActive === true);
-  } else if (!status) {
+  } else if (status === false) {
     filteredData = patients.filter((patient) => patient.isActive === false);
   } else filteredData = patients;
 
