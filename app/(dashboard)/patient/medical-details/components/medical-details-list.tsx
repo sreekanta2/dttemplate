@@ -1,6 +1,6 @@
-import IconWrapper from "@/components/IconWraper";
 import Pagination from "@/components/PaginationComponents";
 import SearchInput from "@/components/SearchInput";
+import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   Table,
@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Trash } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { MedicalDetailsForm } from "./medical-details-form";
 import { MedicalDetailsModal } from "./medical-details-modal";
 import { MedicalDetailsUpdateForm } from "./medical-details-update-form";
@@ -62,11 +62,14 @@ export default function MedicalDetailLst() {
                 <TableCell className="flex  gap-4 ">
                   <MedicalDetailsModal />
                   <MedicalDetailsUpdateForm />
-                  <IconWrapper
-                    icon={Trash}
-                    strokeWidth={2}
-                    className="hover:bg-destructive text-default-500 hover:text-primary-foreground hover:border-0"
-                  />
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    className="h-7 w-7 rounded-full"
+                    color="secondary"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

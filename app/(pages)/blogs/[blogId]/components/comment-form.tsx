@@ -1,6 +1,7 @@
 "use client";
-import TextareaFormField from "@/components/FormField";
+import CustomFormField, { FormFieldType } from "@/components/custom-form-field";
 import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -21,11 +22,7 @@ export default function CommentForm() {
 
   type formData = z.infer<typeof formSchema>;
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<formData>({
+  const form = useForm<formData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       // anonymous: false,
@@ -36,19 +33,21 @@ export default function CommentForm() {
 
   const onSubmit: SubmitHandler<formData> = (data: any) => {};
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className=" border p-4  rounded-md bg-card space-y-4"
-    >
-      <TextareaFormField
-        name="comment"
-        control={control}
-        label="Comments"
-        error={errors.comment?.message}
-      />
-      <Button variant="soft" color="info">
-        Submit
-      </Button>
-    </form>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className=" border p-4  rounded-md bg-card space-y-4"
+      >
+        <CustomFormField
+          fieldType={FormFieldType.TEXTAREA}
+          control={form.control}
+          name="comment"
+          iconAlt="user"
+        />
+        <Button variant="soft" color="info">
+          Submit
+        </Button>
+      </form>
+    </Form>
   );
 }

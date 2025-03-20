@@ -1,7 +1,7 @@
-import IconWrapper from "@/components/IconWraper";
 import ImageComponent from "@/components/ImageComponent";
 import Pagination from "@/components/PaginationComponents";
 import SearchInput from "@/components/SearchInput";
+import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   Table,
@@ -12,7 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { avatar } from "@/config/user/user.config";
-import { Download, Eye, Trash } from "lucide-react";
+import { DownloadIcon, EyeIcon, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 export default function InvoiceTableList() {
@@ -66,22 +66,31 @@ export default function InvoiceTableList() {
                 </TableCell>
                 <TableCell className="flex  gap-4 ">
                   <Link href={`patient-invoice-list/${i}`}>
-                    <IconWrapper
-                      icon={Eye}
-                      strokeWidth={2}
-                      className="hover:bg-success text-default-500 hover:text-primary-foreground hover:border-0"
-                    />
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="h-7 w-7 rounded-full"
+                      color="secondary"
+                    >
+                      <EyeIcon className="h-4 w-4" />
+                    </Button>
                   </Link>
-                  <IconWrapper
-                    icon={Download}
-                    strokeWidth={2}
-                    className="hover:bg-success text-default-500 hover:text-primary-foreground hover:border-0"
-                  />
-                  <IconWrapper
-                    icon={Trash}
-                    strokeWidth={2}
-                    className="hover:bg-destructive text-default-500 hover:text-primary-foreground hover:border-0"
-                  />
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    className="h-7 w-7 rounded-full"
+                    color="info"
+                  >
+                    <DownloadIcon className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    className="h-7 w-7 rounded-full"
+                    color="destructive"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

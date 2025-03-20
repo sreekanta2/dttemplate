@@ -70,7 +70,7 @@ const PricingCard = ({ plan, isPopular = false }: PricingCardProps) => {
         </ul>
       </div>
       <Button asChild>
-        <Link href={ctaLink} target="__blank" className="mt-8 xl:mt-12 w-full">
+        <Link href={"#"} target="__blank" className="mt-8 xl:mt-12 w-full">
           Buy Now
         </Link>
       </Button>
